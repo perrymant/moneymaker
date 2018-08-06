@@ -1,7 +1,6 @@
 package io.github.perrymant.moneymaker;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static io.github.perrymant.moneymaker.TransactionType.CREDIT;
@@ -15,10 +14,12 @@ class TransactionMaker {
 
     private Transaction makeTransaction() {
         Transaction transaction = new Transaction();
+        transaction.setTime("2018/01/01");
         transaction.setTransactionType(CREDIT);
-        transaction.setDate(new Date());
-        transaction.setDescription("Latest ");
-        transaction.setAmount(100);
+        transaction.setAmount(125);
+        transaction.setDescription("Got paid");
         return transaction;
     }
+
+
 }

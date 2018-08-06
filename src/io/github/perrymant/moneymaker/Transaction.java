@@ -1,39 +1,29 @@
 package io.github.perrymant.moneymaker;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Transaction {
+    private String time;
     private TransactionType transactionType;
-    private Date date;
-    private String description;
     private int amount;
+    private String description;
 
-
-    public Date getDate() {
-        return date;
+// use this to add the current time - not implemented yet.
+    String getTimeNow() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formatDateTime = now.format(formatter);
+        return formatDateTime;
     }
 
-    public Transaction setDate(Date date) {
-        this.date = date;
-        return this;
+    String getTime() {
+        return time;
     }
 
-    public String getDescription() {
-        return description;
+    void setTime(String time) {
+        this.time = time;
     }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
 
     TransactionType getTransactionType() {
         return transactionType;
@@ -42,11 +32,36 @@ public class Transaction {
     void setTransactionType(TransactionType transactionType) {
         this.transactionType = transactionType;
     }
+
+    int getAmount() {
+        return amount;
+    }
+
+    void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    String getDescription() {
+        return description;
+    }
+
+    void setDescription(String description) {
+        this.description = description;
+    }
+
+    String reportStringFormat() {
+        String report = "";
+        report += getTime() + ", ";
+        report += getTransactionType() + ", ";
+        report += getAmount() + ", ";
+        report += getDescription();
+        return report;
+    }
 }
 
 enum TransactionType {
     CREDIT,
-    DEBIT;
+    DEBIT
 }
 
 

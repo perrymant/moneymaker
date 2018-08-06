@@ -9,6 +9,6 @@ class Balance {
     }
 
     void increment(int i) {
-        this.value = i;
+        this.value += i;
     }
 }
