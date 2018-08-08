@@ -9,6 +9,8 @@ import static org.junit.Assert.assertEquals;
 
 public class BudgetTest {
 
+    private static final String DATE_TIME = "2018/01/02";
+    private static final String DESCRIPTION = "Got paid";
     private Balance balance = new Balance();
     private List<Transaction> transactions = new ArrayList<>();
 
@@ -25,16 +27,6 @@ public class BudgetTest {
     }
 
     @Test
-    public void startCanChangeBalanceValue_Credit() {
-        transactions.add(makeCreditTransaction());
-        transactions.add(makeCreditTransaction());
-        Budget target = makeBudget();
-        assertEquals(0, balance.get());
-        target.updateBalance();
-        assertEquals(300, balance.get());
-    }
-
-    @Test
     public void createDebitTransaction() {
         transactions.add(makeDebitTransaction());
         Budget target = makeBudget();
@@ -42,22 +34,6 @@ public class BudgetTest {
         target.updateBalance();
         assertEquals(-20, balance.get());
     }
-
-    // GivenATransaction_ReturnReportStringFormat
-
-    @Test
-    public void checkTimeFormatting() {
-        Transaction transaction = new Transaction();
-        assertEquals("2018-08-06", transaction.getTimeNow());
-    }
-
-    @Test
-    public void givenTransaction_GetDescription() {
-        Transaction transaction = new Transaction();
-        transaction.setDescription("New payment");
-        assertEquals("New payment", transaction.getDescription());
-    }
-
 
     @Test
     public void givenTransactionWithHoursMinutes_GetReportStringFormat() {
@@ -70,38 +46,19 @@ public class BudgetTest {
     }
 
     @Test
-    public void createMultipleTransactions() {
-        transactions.add(makeTransactionFromArgs("2018/01/02", TransactionType.CREDIT, 150, "Got paid"));
-        transactions.add(makeTransactionFromArgs("2018/01/03", TransactionType.DEBIT, 100, "Got robbed"));
-        Budget budget = new Budget(balance, transactions);
-        budget.updateBalance();
-        assertEquals(50, balance.get());
-    }
-
-    @Test
-    public void canGenerateStringReport() {
-        transactions.add(makeTransactionFromArgs("2018/01/02", TransactionType.CREDIT, 150, "Got paid"));
-        transactions.add(makeTransactionFromArgs("2018/01/03", TransactionType.DEBIT, 100, "Got robbed"));
-        Budget budget = new Budget(balance, transactions);
-        budget.updateBalance();
-        assertEquals("2018/01/02, CREDIT, 150, Got paid\n2018/01/03, DEBIT, 100, Got robbed\n", budget.printBalance());
-    }
-
-    @Test
     public void canGenerateStringReportWithUpdatedBalance() {
-        transactions.add(makeTransactionFromArgs("2018/01/02", TransactionType.CREDIT, 150, "Got paid"));
-        transactions.add(makeTransactionFromArgs("2018/01/03", TransactionType.DEBIT, 100, "Got robbed"));
+        transactions.add(makeTransactionFromArgs(TransactionType.CREDIT, 150, DESCRIPTION));
+        transactions.add(makeTransactionFromArgs(TransactionType.DEBIT, 100, DESCRIPTION));
         Budget budget = new Budget(balance, transactions);
         budget.updateBalance();
-        assertEquals("2018/01/02, CREDIT, 150, Got paid, 150\n2018/01/03, DEBIT, 100, Got robbed, 50\n", budget.printBalance());
+        assertEquals("2018/01/02, CREDIT, 150, Got paid, 150\n2018/01/02, DEBIT, 100, Got paid, 50\n", budget.makeReport());
     }
 
-    private Transaction makeTransactionFromArgs(String dateTime,
-                                                TransactionType transactionType,
+    private Transaction makeTransactionFromArgs(TransactionType transactionType,
                                                 int amount,
                                                 String description) {
         Transaction transaction = new Transaction();
-        transaction.setTime(dateTime);
+        transaction.setTime(DATE_TIME);
         transaction.setTransactionType(transactionType);
         transaction.setAmount(amount);
         transaction.setDescription(description);
@@ -115,16 +72,10 @@ public class BudgetTest {
         return transaction;
     }
 
-    private Transaction makeCreditTransaction() {
-        Transaction transaction = new Transaction();
-        transaction.setTransactionType(TransactionType.CREDIT);
-        transaction.setAmount(150);
-        return transaction;
-    }
-
     private Budget makeBudget() {
         return new Budget(balance, transactions);
 
     }
-
 }
+
+// makeTransactionFromArgs - makeTransaction

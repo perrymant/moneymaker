@@ -50,12 +50,7 @@ public class Transaction {
     }
 
     String reportStringFormat() {
-        String report = "";
-        report += getTime() + ", ";
-        report += getTransactionType() + ", ";
-        report += getAmount() + ", ";
-        report += getDescription();
-        return report;
+        return  getTime() + ", " + getTransactionType() + ", " + getAmount() + ", " + getDescription();
     }
 }
 

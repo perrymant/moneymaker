@@ -9,6 +9,8 @@ budget calculator
 1. display to user
     1. int balance projection
 
+Default considerations: seed data, testing, documentation.
+
 Classes in use:
 1. Moneymaker (main method)
     - creates a new Budget using:
@@ -43,3 +45,5 @@ Todo: the tests are getting incomprehensible - it suggest the program needs alte
 I feel that the makeTransactionFromArgs() method should be part of the program,
 somehow replacing aspects of the TransactionMaker class - but I'm worried a chance here will require
 many changes throughout the program.
+
+Transaction + Balance --> ReportLine

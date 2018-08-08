@@ -2,7 +2,7 @@ package io.github.perrymant.moneymaker;
 
 public class Moneymaker {
     public static void main(String[] args) {
-        new Budget(new Balance(), new TransactionMaker().getTransactions()).updateBalance();
+        new Budget(new Balance(), new TransactionMaker().getTransactions()).report();
     }
 }
 
@@ -12,6 +12,7 @@ public class Moneymaker {
 // only 1 public class per file.
 //Paste class code when in the "Project pane" -> auto generate class.
 // POJOs get tested through their use in other classes.
-//MVP: minimal viable product
+//MVP: minimum viable product
+// Fed the main method seed data.
 
 // GO OOP

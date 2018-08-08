@@ -9,6 +9,8 @@ class TransactionMaker {
     List<Transaction> getTransactions() {
         List<Transaction> transactions = new ArrayList<>();
         transactions.add(makeTransaction());
+        transactions.add(makeTransaction());
+        transactions.add(makeTransaction());
         return transactions;
     }
 
