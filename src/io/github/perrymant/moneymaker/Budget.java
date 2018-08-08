@@ -7,8 +7,6 @@ import java.util.stream.Collectors;
 import static io.github.perrymant.moneymaker.TransactionType.*;
 
 class Budget {
-    private static final Logger logger = new Logger();
-
     private final Balance balance;
     private final List<Transaction> transactions;
 
@@ -19,12 +17,8 @@ class Budget {
         this.transactions = transactions;
     }
 
-    void report() {
+    String report() {
         updateBalance();
-        logger.info(makeReport());
-    }
-
-    private String makeReport() {
         return report.stream()
                 .map((rl) -> rl.toString() + "\n")
                 .collect(Collectors.joining());

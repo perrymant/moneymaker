@@ -50,8 +50,7 @@ public class BudgetTest {
         transactions.add(makeTransactionFromArgs(TransactionType.CREDIT, 150, DESCRIPTION));
         transactions.add(makeTransactionFromArgs(TransactionType.DEBIT, 100, DESCRIPTION));
         Budget budget = new Budget(balance, transactions);
-        budget.report();
-        assertEquals("2018/01/02, CREDIT, 150, Got paid, 150\n2018/01/02, DEBIT, 100, Got paid, 50\n", budget.makeReport());
+        assertEquals("2018/01/02, CREDIT, 150, Got paid, 150\n2018/01/02, DEBIT, 100, Got paid, 50\n", budget.report());
     }
 
     private Transaction makeTransactionFromArgs(TransactionType transactionType,
