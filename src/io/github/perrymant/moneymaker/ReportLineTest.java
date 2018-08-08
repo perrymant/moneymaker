@@ -9,23 +9,19 @@ public class ReportLineTest {
 
     @Test
     public void canReportALine() {
-        final int amount = 150;
-        final String description = "Blah Blah - literally";
-        final Transaction transaction = makeTransaction(TransactionType.CREDIT, amount, description);
+        final Transaction transaction = makeTransaction();
         final int newBalance = 250;
         final ReportLine reportLine = new ReportLine(transaction, newBalance);
         final String expected = "2018/01/02, CREDIT, 150, Blah Blah - literally, 250";
         assertEquals(expected, reportLine.toString());
     }
 
-    private Transaction makeTransaction(final TransactionType transactionType,
-                                        final int amount,
-                                        final String description) {
+    private Transaction makeTransaction() {
         final Transaction transaction = new Transaction();
         transaction.setTime(DATE_TIME);
-        transaction.setTransactionType(transactionType);
-        transaction.setAmount(amount);
-        transaction.setDescription(description);
+        transaction.setTransactionType(TransactionType.CREDIT);
+        transaction.setAmount(150);
+        transaction.setDescription("Blah Blah - literally");
         return transaction;
     }
 
