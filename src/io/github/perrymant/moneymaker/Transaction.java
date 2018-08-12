@@ -39,6 +39,7 @@ class Transaction {
     }
 
     String reportStringFormat() {
-        return  getTime() + ", " + getTransactionType() + ", " + getAmount() + ", " + getDescription();
+
+        return  getTime() + "\t| " + getTransactionType() + "\t\t\t| " + getAmount() + "\t\t| " + getDescription();
     }
 }

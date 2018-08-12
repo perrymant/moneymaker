@@ -16,6 +16,26 @@ public class ReportLineTest {
         assertEquals(expected, reportLine.toString());
     }
 
+    @Test
+    public void canReportWithHeaderInfo() {
+        final Transaction transaction = makeTransaction();
+        final int newBalance = 150;
+        final ReportLine reportLine = new ReportLine(transaction, newBalance);
+        final String expected = "Date, Transaction Type, Amount, Description, Balance\n" +
+                                "2018/01/02, CREDIT, 150, Blah Blah - literally, 150";
+        assertEquals(expected, reportLine.toString());
+    }
+
+    @Test
+    public void canReportWithHeaderWithTabSpacing() {
+        final Transaction transaction = makeTransaction();
+        final int newBalance = 150;
+        final ReportLine reportLine = new ReportLine(transaction, newBalance);
+        final String expected = "Date\t\t| Transaction Type\t| Amount\t| Description\t\t| Balance\n" +
+                                "2018/01/02, CREDIT, 150, Blah Blah - literally, 150";
+        assertEquals(expected, reportLine.toString());
+    }
+
     private Transaction makeTransaction() {
         final Transaction transaction = new Transaction();
         transaction.setTime(DATE_TIME);
