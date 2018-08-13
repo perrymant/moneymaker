@@ -28,6 +28,7 @@ public class BudgetTest {
         assertEquals("2018/01/02, CREDIT, 150, Got paid, 150\n2018/01/02, DEBIT, 20, Lost money, 130\n", target.report());
     }
 
+
     private Transaction makeCreditTransaction() {
         final Transaction transaction = new Transaction();
         transaction.setTime(DATE_TIME);
@@ -45,5 +46,12 @@ public class BudgetTest {
         transaction.setDescription("Lost money");
         return transaction;
     }
+
+    private String targetTable = "Date\t\t| Transaction Type\t| Amount\t| Balance\t| Description\t\t\t|\n" +
+            "=================================================================================\n" +
+            "2018/01/01\t| CREDIT\t\t\t| £ 125\t\t| £ 125\t\t| 800Kg of diamonds\t\t|\n" +
+            "\t\t\t|\t\t\t\t\t|\t\t\t|\t\t\t| from Sierra Leone\t\t|\n" +
+            "2018/01/01\t| CREDIT\t\t\t| £ 125\t\t| £ 250\t\t| 800Kg of diamonds\t\t|\n" +
+            "\t\t\t|\t\t\t\t\t|\t\t\t|\t\t\t| from Sierra Leone\t\t|";
 
 }

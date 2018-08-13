@@ -38,7 +38,4 @@ class Transaction {
         this.description = description;
     }
 
-    String reportStringFormat() {
-        return  getTime() + ", " + getTransactionType() + ", " + getAmount() + ", " + getDescription();
-    }
 }

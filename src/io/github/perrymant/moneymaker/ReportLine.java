@@ -11,6 +11,12 @@ class ReportLine {
 
     @Override
     public String toString() {
-        return transaction.reportStringFormat() + ", " + balance;
+        return transaction.getTime()
+                + "\t| " + transaction.getTransactionType()
+                + "\t\t\t| £ " + transaction.getAmount()
+                + "\t\t| £ " + balance
+                + "\t\t| "
+                + TextWrapper.wrap(transaction.getDescription())
+                + "\t\t|"; // TODO: endOfLineFormat
     }
 }

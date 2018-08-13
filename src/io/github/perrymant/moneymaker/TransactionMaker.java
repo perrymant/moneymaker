@@ -10,7 +10,6 @@ class TransactionMaker {
         List<Transaction> transactions = new ArrayList<>();
         transactions.add(makeTransaction());
         transactions.add(makeTransaction());
-        transactions.add(makeTransaction());
         return transactions;
     }
 
@@ -19,7 +18,7 @@ class TransactionMaker {
         transaction.setTime("2018/01/01");
         transaction.setTransactionType(CREDIT);
         transaction.setAmount(125);
-        transaction.setDescription("Got paid");
+        transaction.setDescription("800Kg of diamonds from Sierra Leone");
         return transaction;
     }
 
