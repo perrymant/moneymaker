@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static io.github.perrymant.moneymaker.TransactionType.*;
+import static io.github.perrymant.moneymaker.TransactionType.CREDIT;
 
 class Budget {
     private final Balance balance;

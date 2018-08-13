@@ -2,21 +2,20 @@ package io.github.perrymant.moneymaker;
 
 class ReportLine {
     private final Transaction transaction;
-    private final int balance;
+    private final double balance;
 
-    ReportLine(final Transaction transaction, final int balance) {
+    ReportLine(final Transaction transaction, final double balance) {
         this.transaction = transaction;
         this.balance = balance;
     }
 
     @Override
     public String toString() {
-        return transaction.getTime()
-                + "\t| " + transaction.getTransactionType()
-                + "\t\t\t| £ " + transaction.getAmount()
-                + "\t\t| £ " + balance
-                + "\t\t| "
-                + TextWrapper.wrap(transaction.getDescription())
-                + "\t\t|"; // TODO: endOfLineFormat
+        final String time = transaction.getTime();
+        final TransactionType transactionType = transaction.getTransactionType();
+        final double amount = transaction.getAmount();
+        final String description = TextWrapper.wrap(transaction.getDescription());
+        return String.format("%-12s| %-18s| £ %-,16.2f| £ %-, 16.2f| %24s", time, transactionType, amount, balance, description);
     }
+
 }

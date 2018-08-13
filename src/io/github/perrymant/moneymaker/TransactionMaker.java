@@ -19,15 +19,16 @@ class TransactionMaker {
         Transaction transaction = new Transaction();
         transaction.setTime("2018/01/01");
         transaction.setTransactionType(CREDIT);
-        transaction.setAmount(125);
+        transaction.setAmount(125.50);
         transaction.setDescription("800Kg of diamonds from Sierra Leone");
         return transaction;
     }
+
     private Transaction makeTransaction_2() {
         Transaction transaction = new Transaction();
         transaction.setTime("2018/01/01");
         transaction.setTransactionType(DEBIT);
-        transaction.setAmount(400);
+        transaction.setAmount(400000000);
         transaction.setDescription("Plumbing bill: callout for issue with storage heater");
         return transaction;
     }

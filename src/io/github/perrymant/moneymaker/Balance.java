@@ -1,13 +1,13 @@
 package io.github.perrymant.moneymaker;
 
 class Balance {
-    private int value = 0;
+    private double value = 0;
 
-    int get() {
+    double get() {
         return value;
     }
 
-    void increment(final int i) {
+    void increment(final double i) {
         this.value += i;
     }
 }

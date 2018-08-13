@@ -40,5 +40,4 @@ Classes in use:
     - Reportline(transaction, balance)
     - .toString()
 
-TODO: Format output: spacing, needs to be calculated in ReportLine and Textwrapper classes
 TODO: input/output to csv file
