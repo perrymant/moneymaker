@@ -11,6 +11,6 @@ class ReportLine {
 
     @Override
     public String toString() {
-        return transaction.reportStringFormat() + "\t\t\t| " + balance +"\t\t|";
+        return transaction.reportStringFormat() + ", " + balance;
     }
 }
