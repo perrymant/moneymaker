@@ -10,8 +10,8 @@ class TransactionMaker {
     List<Transaction> getTransactions() {
         List<Transaction> transactions = new ArrayList<>();
         transactions.add(makeTransaction());
-        transactions.add(makeTransaction());
         transactions.add(makeTransaction_2());
+        transactions.add(makeTransaction_3());
         return transactions;
     }
 
@@ -28,8 +28,17 @@ class TransactionMaker {
         Transaction transaction = new Transaction();
         transaction.setTime("2018/01/01");
         transaction.setTransactionType(DEBIT);
-        transaction.setAmount(400000000);
+        transaction.setAmount(800);
         transaction.setDescription("Plumbing bill: callout for issue with storage heater");
+        return transaction;
+    }
+
+    private Transaction makeTransaction_3() {
+        Transaction transaction = new Transaction();
+        transaction.setTime("2018/01/01");
+        transaction.setTransactionType(CREDIT);
+        transaction.setAmount(200);
+        transaction.setDescription("Played monopoly and landed on go, got 200 pounds!");
         return transaction;
     }
 

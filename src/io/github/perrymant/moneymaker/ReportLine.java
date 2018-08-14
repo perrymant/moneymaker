@@ -15,7 +15,7 @@ class ReportLine {
         final TransactionType transactionType = transaction.getTransactionType();
         final double amount = transaction.getAmount();
         final String description = TextWrapper.wrap(transaction.getDescription());
-        return String.format("%-12s| %-18s| £ %-,16.2f| £ %-, 16.2f| %24s", time, transactionType, amount, balance, description);
+        return String.format("| %-11s| %-18s| £ %-,16.2f| £ %-, 16.2f| %24s", time, transactionType, amount, balance, description);
     }
 
 }
