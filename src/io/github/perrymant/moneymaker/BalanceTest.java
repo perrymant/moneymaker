@@ -8,7 +8,7 @@ public class BalanceTest {
 
     @Test
     public void startBalanceIsZero() {
-        assertEquals(0, new Balance().get());
+        assertEquals(0.0, new Balance().get(), 0.0f);
     }
 
 }
