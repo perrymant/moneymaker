@@ -24,6 +24,13 @@ class Budget {
                 .collect(Collectors.joining());
     }
 
+    String reportCSV() {
+        updateBalance();
+        return report.stream()
+                .map((rl) -> rl.toStringCSV() + "\n")
+                .collect(Collectors.joining());
+    }
+
     private void updateBalance() {
         for (final Transaction transaction : transactions) {
             final int sign = transaction.getTransactionType() == CREDIT ? 1 : -1;

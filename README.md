@@ -40,4 +40,6 @@ Classes in use:
     - Reportline(transaction, balance)
     - .toString()
 
+http://patorjk.com/software/taag/#p=display&f=Big%20Money-ne&t=MoneyMaker
+
 TODO: input/output to csv file

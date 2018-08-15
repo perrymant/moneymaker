@@ -26,7 +26,7 @@ class TransactionMaker {
 
     private Transaction makeTransaction_2() {
         Transaction transaction = new Transaction();
-        transaction.setTime("2018/01/01");
+        transaction.setTime("2018/01/03");
         transaction.setTransactionType(DEBIT);
         transaction.setAmount(800);
         transaction.setDescription("Plumbing bill: callout for issue with storage heater");
@@ -35,7 +35,7 @@ class TransactionMaker {
 
     private Transaction makeTransaction_3() {
         Transaction transaction = new Transaction();
-        transaction.setTime("2018/01/01");
+        transaction.setTime("2018/03/01");
         transaction.setTransactionType(CREDIT);
         transaction.setAmount(200);
         transaction.setDescription("Played monopoly and landed on go, got 200 pounds!");
