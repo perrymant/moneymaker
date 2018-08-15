@@ -13,7 +13,7 @@ public class ReportLineTest {
         final int newBalance = 250;
         final ReportLine reportLine = new ReportLine(transaction, newBalance);
         final String expected = "2018/01/02, CREDIT, 150, Blah Blah - literally, 250";
-        assertEquals(expected, reportLine.toString());
+        assertEquals(expected, reportLine.toStringCSV());
     }
 
     private Transaction makeTransaction() {

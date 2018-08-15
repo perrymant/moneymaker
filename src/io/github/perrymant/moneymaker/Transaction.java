@@ -3,7 +3,7 @@ package io.github.perrymant.moneymaker;
 class Transaction {
     private String time;
     private TransactionType transactionType;
-    private int amount;
+    private double amount;
     private String description;
 
     String getTime() {
@@ -22,11 +22,11 @@ class Transaction {
         this.transactionType = transactionType;
     }
 
-    int getAmount() {
+    double getAmount() {
         return amount;
     }
 
-    void setAmount(int amount) {
+    void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -38,7 +38,4 @@ class Transaction {
         this.description = description;
     }
 
-    String reportStringFormat() {
-        return  getTime() + ", " + getTransactionType() + ", " + getAmount() + ", " + getDescription();
-    }
 }

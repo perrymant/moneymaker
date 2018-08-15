@@ -18,15 +18,16 @@ public class BudgetTest {
     public void givenDebitTransaction_canHaveNegativeBalance() {
         transactions.add(makeDebitTransaction());
         target.report();
-        assertEquals(-20, balance.get());
+        assertEquals(-20, balance.get(), 0.0f);
     }
 
     @Test
     public void givenMultipleTransactions_reportsAllTransactionsAndUpdatesBalance() {
         transactions.add(makeCreditTransaction());
         transactions.add(makeDebitTransaction());
-        assertEquals("2018/01/02, CREDIT, 150, Got paid, 150\n2018/01/02, DEBIT, 20, Lost money, 130\n", target.report());
+        assertEquals("2018/01/02,CREDIT,150.0,150.0,\"Got paid\"\n2018/01/02,DEBIT,20.0,130.0,\"Lost money\"\n", target.reportCSV());
     }
+
 
     private Transaction makeCreditTransaction() {
         final Transaction transaction = new Transaction();

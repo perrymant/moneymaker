@@ -1,0 +1,4 @@
+Date, Transaction Type, Amount, Balance, Description
+2018/01/01,CREDIT,125.5,125.5,"800Kg of diamonds from Sierra Leone"
+2018/01/03,DEBIT,800.0,-674.5,"Plumbing bill: callout for issue with storage heater"
+2018/03/01,CREDIT,200.0,-474.5,"Played monopoly and landed on go, got 200 pounds!"

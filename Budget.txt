@@ -1,0 +1,8 @@
+| Date       | Transaction Type  | Amount            | Balance           | Description                       |
+|============+===================+===================+===================+===================================|
+| 2018/01/01 | CREDIT            | £ 125.50          | £  125.50         | 800Kg of diamonds from Sierra     |
+|            |                   |                   |                   | Leone                             |
+| 2018/01/03 | DEBIT             | £ 800.00          | £ -674.50         | Plumbing bill: callout for issue  |
+|            |                   |                   |                   | with storage heater               |
+| 2018/03/01 | CREDIT            | £ 200.00          | £ -474.50         | Played monopoly and landed on go, |
+|            |                   |                   |                   | got 200 pounds!                   |
