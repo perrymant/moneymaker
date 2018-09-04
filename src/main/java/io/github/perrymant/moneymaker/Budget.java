@@ -9,7 +9,6 @@ import static io.github.perrymant.moneymaker.TransactionType.*;
 class Budget {
     private final Balance balance;
     private final List<Transaction> transactions;
-
     private final List<ReportLine> report = new ArrayList<>();
 
     Budget(final Balance balance, final List<Transaction> transactions) {
