@@ -4,6 +4,7 @@ import com.jakewharton.fliptables.FlipTableConverters;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static io.github.perrymant.moneymaker.TransactionType.CREDIT;
@@ -44,12 +45,14 @@ public class FlipTableTest {
     }
 
     /* Todo: use of Budget class in FlipTableConverters.fromIterable method */
-    @Ignore
+
+
     @Test
     public void useOfBudgetClassToGenerateTable() {
+        final Balance balance = new Balance();
         List<Transaction> transactions = new TransactionMaker().getTransactions();
-        final Budget budget = new Budget(new Balance(), transactions);
-//        System.out.println(budget.report());
+        final Budget budget = new Budget(balance, transactions);
+        System.out.println(budget.report());
         String expected = ""
                 + "╔════════╤═════════╤═════════════╤════════════╤═════════════════╗\n"
                 + "║ Amount │ Balance │ Description │ Time       │ TransactionType ║\n"
@@ -61,15 +64,10 @@ public class FlipTableTest {
                 + "║ 72     │ 178     │ Paid bill   │ 2018/01/02 │ DEBIT           ║\n"
                 + "╚════════╧═════════╧═════════════╧════════════╧═════════════════╝\n";
 
-        String table = FlipTableConverters.fromIterable(transactions, Transaction.class);
+        String[] headers = new String[]{"Time", "TransactionType", "Amount", "Balance", "Description"};
+        String[][] reportObject = budget.report();
+        String table = FlipTableConverters.fromObjects(headers, reportObject);
         assertEquals(expected, table);
-    }
-
-    /* Todo: FlipTableConverters forces ascending sorting of headers, be able to create desired order */
-    @Ignore
-    @Test
-    public void orderOfHeaders() {
-        String[] headerOrder = {"Time", "TransactionType", "Amount", "Balance", "Description"};
     }
 
 }
