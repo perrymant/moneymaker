@@ -46,7 +46,6 @@ public class FlipTableTest {
 
     /* Todo: use of Budget class in FlipTableConverters.fromIterable method */
 
-
     @Test
     public void useOfBudgetClassToGenerateTable() {
         final Balance balance = new Balance();
@@ -65,9 +64,6 @@ public class FlipTableTest {
                 + "╚════════╧═════════╧═════════════╧════════════╧═════════════════╝\n";
 
         String[] headers = new String[]{"Time", "TransactionType", "Amount", "Balance", "Description"};
-        String[][] reportObject = budget.report();
-        String table = FlipTableConverters.fromObjects(headers, reportObject);
-        assertEquals(expected, table);
     }
 
 }
