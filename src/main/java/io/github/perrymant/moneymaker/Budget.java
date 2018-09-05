@@ -1,5 +1,7 @@
 package io.github.perrymant.moneymaker;
 
+import com.jakewharton.fliptables.FlipTable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,6 +9,7 @@ import java.util.stream.Collectors;
 import static io.github.perrymant.moneymaker.TransactionType.*;
 
 class Budget {
+    private static final String[] HEADERS = new String[]{"Time", "Transaction Type", "Amount", "Balance", "Description"};
     private final Balance balance;
     private final List<Transaction> transactions;
     private final List<ReportLine> report = new ArrayList<>();
@@ -18,9 +21,14 @@ class Budget {
 
     String report() {
         updateBalance();
+        return FlipTable.of(HEADERS, createData());
+    }
+
+    private String[][] createData() {
         return report.stream()
-                .map((rl) -> rl.toString() + "\n")
-                .collect(Collectors.joining());
+                .map(rl -> rl.getRowItems())
+                .collect(Collectors.toList())
+                .toArray(new String[report.size()][]);
     }
 
     private void updateBalance() {
@@ -31,6 +39,6 @@ class Budget {
         }
     }
 
+
+
 }
-
-

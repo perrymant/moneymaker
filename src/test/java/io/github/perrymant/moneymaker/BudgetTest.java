@@ -22,19 +22,22 @@ public class BudgetTest {
     }
 
     @Test
-    public void givenMultipleTransactions_reportsAllTransactionsAndUpdatesBalance() {
-        transactions.add(makeCreditTransaction());
-        transactions.add(makeDebitTransaction());
-        assertEquals("2018/01/02, CREDIT, 150, Got paid, 150\n2018/01/02, DEBIT, 20, Lost money, 130\n", target.report());
-    }
+    public void useOfBudgetClassToGenerateTable() {
+        final Balance balance = new Balance();
+        List<Transaction> transactions = new TransactionMaker().getTransactions();
+        final Budget budget = new Budget(balance, transactions);
+        String expected = "" +
+                "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
+                "║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +
+                "╠════════════╪══════════════════╪════════╪═════════╪═════════════╣\n" +
+                "║ 2018/01/01 │ CREDIT           │ 125    │ 125     │ Got paid    ║\n" +
+                "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
+                "║ 2018/01/01 │ CREDIT           │ 125    │ 250     │ Got paid    ║\n" +
+                "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
+                "║ 2018/01/02 │ DEBIT            │ 72     │ 178     │ Paid bill   ║\n" +
+                "╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
 
-    private Transaction makeCreditTransaction() {
-        final Transaction transaction = new Transaction();
-        transaction.setTime(DATE_TIME);
-        transaction.setTransactionType(TransactionType.CREDIT);
-        transaction.setAmount(150);
-        transaction.setDescription("Got paid");
-        return transaction;
+        assertEquals(expected, budget.report());
     }
 
     private Transaction makeDebitTransaction() {

@@ -1,5 +1,7 @@
 package io.github.perrymant.moneymaker;
 
+import static java.lang.String.valueOf;
+
 class ReportLine {
     private final Transaction transaction;
     private final int balance;
@@ -9,14 +11,13 @@ class ReportLine {
         this.balance = balance;
     }
 
-    @Override
-    public String toString() {
-        return transaction.reportStringFormat() + ", " + balance;
-    }
-
-    Object[] getRowItems() {
-        return new Object[] {
-            transaction.getTime(), transaction.getTransactionType(), transaction.getAmount(), balance, transaction.getDescription()
+    String[] getRowItems() {
+        return new String[]{
+                transaction.getTime(),
+                transaction.getTransactionType().name(),
+                valueOf(transaction.getAmount()),
+                valueOf(balance),
+                transaction.getDescription()
         };
     }
 }
