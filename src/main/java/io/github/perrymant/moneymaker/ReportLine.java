@@ -13,4 +13,10 @@ class ReportLine {
     public String toString() {
         return transaction.reportStringFormat() + ", " + balance;
     }
+
+    Object[] getRowItems() {
+        return new Object[] {
+            transaction.getTime(), transaction.getTransactionType(), transaction.getAmount(), balance, transaction.getDescription()
+        };
+    }
 }
