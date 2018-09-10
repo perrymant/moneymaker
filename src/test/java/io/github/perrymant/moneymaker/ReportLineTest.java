@@ -1,0 +1,36 @@
+package io.github.perrymant.moneymaker;
+
+import org.junit.Test;
+
+import static java.lang.String.valueOf;
+import static org.junit.Assert.assertArrayEquals;
+
+public class ReportLineTest {
+    private static final String DATE_TIME = "2018/01/02";
+    private static final int AMOUNT = 150;
+    private static final String DESCRIPTION = "Blah Blah - literally";
+
+    @Test
+    public void createsReportLineInExpectedFormat() {
+        final int balance = 2134;
+        final Object[] rowItems = new ReportLine(makeTransaction(), balance).getRowItems();
+        assertArrayEquals(
+                new String[]{DATE_TIME,
+                        TransactionType.CREDIT.name(),
+                        valueOf(AMOUNT),
+                        valueOf(balance), DESCRIPTION},
+                rowItems);
+    }
+
+    private Transaction makeTransaction() {
+        final Transaction transaction = new Transaction();
+        transaction.setTime(DATE_TIME);
+        transaction.setTransactionType(TransactionType.CREDIT);
+        transaction.setAmount(AMOUNT);
+        transaction.setDescription(DESCRIPTION);
+        return transaction;
+    }
+
+
+}
+

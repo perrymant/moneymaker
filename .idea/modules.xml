@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/moneymaker.iml" filepath="$PROJECT_DIR$/moneymaker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/moneymaker_main.iml" filepath="$PROJECT_DIR$/.idea/modules/moneymaker_main.iml" group="moneymaker" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/moneymaker_test.iml" filepath="$PROJECT_DIR$/.idea/modules/moneymaker_test.iml" group="moneymaker" />
     </modules>
   </component>
 </project>

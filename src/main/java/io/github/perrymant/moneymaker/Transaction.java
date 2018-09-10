@@ -38,8 +38,11 @@ class Transaction {
         this.description = description;
     }
 
+<<<<<<< HEAD:src/io/github/perrymant/moneymaker/Transaction.java
     String reportStringFormat() {
 
         return  getTime() + "\t| " + getTransactionType() + "\t\t\t| " + getAmount() + "\t\t| " + getDescription();
     }
+=======
+>>>>>>> b501cd59f02d273b9d0ae5d38276bb73a5193ca3:src/main/java/io/github/perrymant/moneymaker/Transaction.java
 }
