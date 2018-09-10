@@ -24,8 +24,7 @@
     1. int outgoing
 1. display to user
     1. int balance projection
- Default considerations: seed data, testing, documentation.
- 
+     
 ### Classes & Methods in use:
 1. Moneymaker (main method)
     - Prints a report:
