@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/perrymant/moneymaker.svg)](https://travis-ci.org/perrymant/moneymaker)
 ![GitHub](https://img.shields.io/github/license/perrymant/moneymaker.svg)
 
-<pre>
+```
  /$$      /$$     Welcome to ...                      /$$      /$$           /$$                          
 | $$$    /$$$                                        | $$$    /$$$          | $$                          
 | $$$$  /$$$$  /$$$$$$  /$$$$$$$   /$$$$$$  /$$   /$$| $$$$  /$$$$  /$$$$$$ | $$   /$$  /$$$$$$   /$$$$$$ 
@@ -13,7 +13,8 @@
                                             /$$  | $$                                                     
                                            |  $$$$$$/     ... Gold don't get old                                                
                                             \______/                                                      
-</pre>
+```
+
 # A Budget Calculator
 
 ### Requirements:
@@ -53,3 +54,6 @@
 1. TransactionMaker:
     - makeTransaction()
     - getTransactions
+
+This sprint's requirements to implement:
+    - fileIO: read, write, append
