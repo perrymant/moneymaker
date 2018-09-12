@@ -8,3 +8,5 @@ jdk:
 #  directories:
 #    - $HOME/.gradle/caches/
 #    - $HOME/.gradle/wrapper/
+script:
+  - ./gradlew test --info --stacktrace
