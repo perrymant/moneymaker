@@ -12,17 +12,16 @@ class FileIO {
     String read(String fileName) {
         try {
             return new String(Files.readAllBytes(Paths.get(fileName)), Charset.defaultCharset());
-        } catch (RuntimeException | IOException e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new AppendException("Exception: Couldn't read from file!", e);
         }
-        return fileName;
     }
 
     void write(String data, String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(data);
-        } catch (RuntimeException | IOException e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new AppendException("Exception: Couldn't write to file!", e);
         }
     }
 
@@ -30,9 +29,14 @@ class FileIO {
         final boolean append = true;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, append))) {
             writer.append(dataToAppend);
-        } catch (RuntimeException | IOException e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new AppendException("Exception: Couldn't append to file!", e);
         }
     }
 
+    private class AppendException extends RuntimeException {
+        AppendException(String message, IOException e) {
+            super(message, e);
+        }
+    }
 }

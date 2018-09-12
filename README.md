@@ -55,5 +55,13 @@
     - makeTransaction()
     - getTransactions
 
+
+
 This sprint's requirements to implement:
     - fileIO: read, write, append
+
+Previous requirements met:
+- [x] start a new balance
+- [x] be able to generate transactions (date, transaction, balance, description)
+- [x] carry a balance forward
+- [x] log transactions
