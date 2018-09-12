@@ -1,7 +1,23 @@
 [![Build Status](https://travis-ci.org/perrymant/moneymaker.svg)](https://travis-ci.org/perrymant/moneymaker)
 ![GitHub](https://img.shields.io/github/license/perrymant/moneymaker.svg)
 
-budget calculator
+```
+ /$$      /$$     Welcome to ...                      /$$      /$$           /$$
+| $$$    /$$$                                        | $$$    /$$$          | $$
+| $$$$  /$$$$  /$$$$$$  /$$$$$$$   /$$$$$$  /$$   /$$| $$$$  /$$$$  /$$$$$$ | $$   /$$  /$$$$$$   /$$$$$$
+| $$ $$/$$ $$ /$$__  $$| $$__  $$ /$$__  $$| $$  | $$| $$ $$/$$ $$ |____  $$| $$  /$$/ /$$__  $$ /$$__  $$
+| $$  $$$| $$| $$  \ $$| $$  \ $$| $$$$$$$$| $$  | $$| $$  $$$| $$  /$$$$$$$| $$$$$$/ | $$$$$$$$| $$  \__/
+| $$\  $ | $$| $$  | $$| $$  | $$| $$_____/| $$  | $$| $$\  $ | $$ /$$__  $$| $$_  $$ | $$_____/| $$
+| $$ \/  | $$|  $$$$$$/| $$  | $$|  $$$$$$$|  $$$$$$$| $$ \/  | $$|  $$$$$$$| $$ \  $$|  $$$$$$$| $$
+|__/     |__/ \______/ |__/  |__/ \_______/ \____  $$|__/     |__/ \_______/|__/  \__/ \_______/|__/
+                                            /$$  | $$
+                                           |  $$$$$$/     ... Gold don't get old
+                                            \______/
+```
+
+# A Budget Calculator
+
+### Requirements:
 1. user input (hardcoded)
     1. String date
     1. String description
@@ -9,36 +25,43 @@ budget calculator
     1. int outgoing
 1. display to user
     1. int balance projection
- Default considerations: seed data, testing, documentation.
- Classes in use:
+
+### Classes & Methods in use:
 1. Moneymaker (main method)
-    - creates a new Budget using:
-    - new Budget(new Balance(), new TransactionMaker().getTransactions()).printReport();
-    Todo: is TransactionMaker really the most simple way to get data into the system?
-1. Budget:
-    - Budget(Balance balance, List<Transaction> transactions)
-    - updateBalance()
-    - printBalance()
+    - Prints a report:
+    - new Logger().info(budget.report());
 1. Balance:
     - get()
     - increment(int i)
-1. TransactionMaker
-    - Hardcode the transactions with makeTransaction()
-    - Uses the Transaction object
+1. Budget:
+    - Budget(Balance balance, List<Transaction> transactions)
+    - report()
+    - createData()
+    - updateBalance()
+1. FileIO:
+    - read(String fileName)
+    - write(String data, String fileName)
+    - append(String dataToAppend, String fileName)
+1. Logger:
+    - info(String string)
+1. ReportLine:
+    - getRowItems()
 1. Transaction: (a POJO)
      - String time
      - TransactionType transactionType: (enum CREDIT/DEBIT)
      - int amount
      - String description
-     - String reportStringFormat()
-     Todo: should reportStringFormat() be in it's own class?
- transaction.reportStringFormat() should look like:
-UTC, transactionType, value, description, balance after transaction.
- TODO: unable to print balance after each transaction - I can only print the final balance.
-- tried to do this in the Budget.printBalance() for loop with budget.get()...
-- tried to add a budget field in the Transaction class with getters/setters...
- Todo: the tests are getting incomprehensible - it suggest the program needs alteration.
-I feel that the makeTransactionFromArgs() method should be part of the program,
-somehow replacing aspects of the TransactionMaker class - but I'm worried a chance here will require
-many changes throughout the program.
- Transaction + Balance --> ReportLine
+1. TransactionMaker:
+    - makeTransaction()
+    - getTransactions
+
+
+
+This sprint's requirements to implement:
+    - fileIO: read, write, append
+
+Previous requirements met:
+- [x] start a new balance
+- [x] be able to generate transactions (date, transaction, balance, description)
+- [x] carry a balance forward
+- [x] log transactions
