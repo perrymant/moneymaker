@@ -9,7 +9,7 @@ public class FileIOTest {
 
     @Test
     public void canAppendData() {
-        String fileName = FileUtils.getTempDirectoryPath() + "file_with_data_append_test";
+        String fileName = FileUtils.getTempDirectoryPath() + "/file_with_data_append_test";
         String dataToWrite = "2019/03/03, CREDIT, 200, 200, Got paid\n2019/03/04, DEBIT, 50, 150, Paid bill\n";
         String dataToAppend = "2018/01/01, CREDIT, 200, 200, Got paid\n2018/01/02, DEBIT, 50, 150, Paid bill\n";
         FileIO fileIO = new FileIO();
