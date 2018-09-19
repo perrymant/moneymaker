@@ -86,7 +86,7 @@ The budget calculator should:
 The budget calculator should:
 1. have improved documentation with details of individual sprint requirements.
 1. take input and make it persistent, then when called again without arguments have it print a report of all the previous persistent data. Use a dot folder in $HOME/.moneymaker, where a data file resides, using the JSON format.
-    
-    
+
+
 #### Improvement notice:
 - The budget calculator should display the date in and ISO 8601 date format (YYYY-MM-DD)
