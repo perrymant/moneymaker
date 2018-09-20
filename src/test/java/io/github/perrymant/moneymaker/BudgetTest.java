@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 public class BudgetTest {
 
-    private static final String DATE_TIME = "2018/01/02";
+    private static final String DATE_TIME = "2018-01-02";
     private Balance balance = new Balance();
     private List<Transaction> transactions = new ArrayList<>();
     private Budget target = new Budget(balance, transactions);
@@ -30,11 +30,11 @@ public class BudgetTest {
                 "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
                 "║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +
                 "╠════════════╪══════════════════╪════════╪═════════╪═════════════╣\n" +
-                "║ 2018/01/01 │ CREDIT           │ 125    │ 125     │ Got paid    ║\n" +
+                "║ 2018-01-01 │ CREDIT           │ 125    │ 125     │ Got paid    ║\n" +
                 "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
-                "║ 2018/01/01 │ CREDIT           │ 125    │ 250     │ Got paid    ║\n" +
+                "║ 2018-01-01 │ CREDIT           │ 125    │ 250     │ Got paid    ║\n" +
                 "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
-                "║ 2018/01/02 │ DEBIT            │ 72     │ 178     │ Paid bill   ║\n" +
+                "║ 2018-01-02 │ DEBIT            │ 72     │ 178     │ Paid bill   ║\n" +
                 "╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
 
         assertEquals(expected, budget.report());
