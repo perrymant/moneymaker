@@ -27,15 +27,9 @@ class Budget implements Serializable {
 
     private String[][] createData() {
         return report.stream()
-                .map(rl -> rl.getRowItems())
+                .map(ReportLine::getRowItems)
                 .collect(Collectors.toList())
                 .toArray(new String[report.size()][]);
-    }
-
-    private List<String[]> createJSONData() {
-        return report.stream()
-                .map(rl -> rl.getRowItems())
-                .collect(Collectors.toList());
     }
 
     private void updateBalance() {

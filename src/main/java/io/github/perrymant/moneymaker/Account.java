@@ -3,10 +3,8 @@ package io.github.perrymant.moneymaker;
 import java.io.Serializable;
 import java.util.List;
 
-
 /**
  * <pre>
- *
  * {
  *   "transactions": [
  *     {
