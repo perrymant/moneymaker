@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/perrymant/moneymaker.svg)](https://travis-ci.org/perrymant/moneymaker)
 ![GitHub](https://img.shields.io/github/license/perrymant/moneymaker.svg)
 
+
 ```
  /$$      /$$     Welcome to ...                      /$$      /$$           /$$
 | $$$    /$$$                                        | $$$    /$$$          | $$
@@ -90,8 +91,8 @@ The budget calculator should:
 
 ### Goldfish Sprint: 19 Sept
 1. cleanup of Frog sprint (2) DONE
-1. The budget calculator should display the date in and ISO 8601 date format (YYYY-MM-DD) (1)
-1. Change Moneymaker.java -> Main.java and complete implementation should be: (2)
+1. The budget calculator should display the date in and ISO 8601 date format (YYYY-MM-DD) (1)   DONE
+1. Change Moneymaker.java -> Main.java and complete implementation should be: (2)               DONE
     ```java
     public class Main {
         public static void main(String[] args) {
@@ -99,5 +100,11 @@ The budget calculator should:
         }
     }
     ```
-1. Design a way of adding transactions to an account. This should be put under a `design/` directory in the root of your repository, and comprise markdown files. (2)
+1. Design a way of adding transactions to an account. 
+This should be put under a `design/` directory in the root of your repository, 
+and comprise markdown files. (2)                                                                DONE
 
+
+### Backlog: 
+1. Display credit/debit amounts and balance in a GBP currency format as per ISO 4217
+Example: £1,234,567.89 GBP
