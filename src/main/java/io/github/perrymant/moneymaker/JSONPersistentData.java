@@ -11,6 +11,7 @@ class JSONPersistentData implements Serializable {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(dataToConvert);
+        SerializedObject SObj = new SerializedObject();
         System.out.println(json);
     }
 

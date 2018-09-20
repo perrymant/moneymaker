@@ -1,23 +1,39 @@
 package io.github.perrymant.moneymaker;
 
+import java.io.Serializable;
+
 import static java.lang.String.valueOf;
 
-class ReportLine {
-    private final Transaction transaction;
-    private final int balance;
+public class ReportLine extends Transaction implements Serializable {
+
+    private int balance;
+
+    ReportLine() {
+    }
 
     ReportLine(final Transaction transaction, final int balance) {
-        this.transaction = transaction;
+        setAmount(transaction.getAmount());
+        setDescription(transaction.getDescription());
+        setTime(transaction.getTime());
+        setTransactionType(transaction.getTransactionType());
         this.balance = balance;
     }
 
     String[] getRowItems() {
         return new String[]{
-                transaction.getTime(),
-                transaction.getTransactionType().name(),
-                valueOf(transaction.getAmount()),
+                getTime(),
+                getTransactionType().name(),
+                valueOf(getAmount()),
                 valueOf(balance),
-                transaction.getDescription()
+                getDescription()
         };
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 }

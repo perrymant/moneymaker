@@ -1,40 +1,42 @@
 package io.github.perrymant.moneymaker;
 
-class Transaction {
+import java.io.Serializable;
+
+public class Transaction implements Serializable {
     private String time;
     private TransactionType transactionType;
     private int amount;
     private String description;
 
-    String getTime() {
+    public String getTime() {
         return time;
     }
 
-    void setTime(String time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
-    TransactionType getTransactionType() {
+    public TransactionType getTransactionType() {
         return transactionType;
     }
 
-    void setTransactionType(TransactionType transactionType) {
+    public void setTransactionType(TransactionType transactionType) {
         this.transactionType = transactionType;
     }
 
-    int getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    void setAmount(int amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 
-    String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 }

@@ -1,27 +1,28 @@
 package io.github.perrymant.moneymaker;
 
+import com.google.gson.Gson;
 import org.junit.Test;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 public class JSONPersistentDataTest {
     private final String JSONFilePath = System.getProperty("user.home") + "/.moneymaker";
-//    final String expectedJSONObject =
+    String expectedJSONObject = "test";
+    //    final String expectedJSONObject =
 //    { "budget" : [
 //        { "time":"2018/01/01",
 //          "transactionType":"CREDIT",
 //          "amount":125,
-//          "balance": 125,
 //          "description":"Got paid" },
 //        { "time":"2018/01/01",
 //          "transactionType":"CREDIT",
 //          "amount":125,
-//          "balance": 250,
 //          "description":"Got paid"},
 //        { "time":"2018/01/02",
 //          "transactionType":"DEBIT",
 //          "amount":72,
-//          "balance": 178,
 //          "description":"Paid bill"}]}
 
     @Test
@@ -30,10 +31,10 @@ public class JSONPersistentDataTest {
         List<Transaction> transactions = new TransactionMaker().getTransactions();
         Budget target = new Budget(balance, transactions);
         JSONPersistentData JSONData = new JSONPersistentData();
-        JSONData.writeJSONObject(target.reportJSON());
+        JSONData.writeJSONObject(target);
     }
 
-
+//
 //    @Test
 //    public void CanReadJSONObject() {
 //        Gson gson = new Gson();

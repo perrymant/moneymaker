@@ -28,4 +28,5 @@ dependencies {
 	compile 'com.jakewharton.fliptables:fliptables:1.0.2'
 	compile 'commons-io:commons-io:2.5'
 	implementation 'com.google.code.gson:gson:2.8.5'
+	compile 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
 }
