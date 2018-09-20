@@ -28,7 +28,7 @@ OPTIONS:
         To perform a debit you must add a description. 
         If no date is provided then the current date will be used.
     -log
-        The log command will print out all transactions in a table
+        The log command will print out all transactions in a table.
 EXAMPLES:
     $java moneymaker -credit 125 "Got paid" 2018-01-01
     $java moneymaker -credit 125 "Got paid" 2018-01-01
