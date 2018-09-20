@@ -1,13 +1,13 @@
 buildscript {
-	ext {
-		springBootVersion = '2.0.4.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '2.0.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
@@ -20,11 +20,12 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	compile 'junit:junit:4.12'
-	compile 'com.jakewharton.fliptables:fliptables:1.0.2'
-	compile 'commons-io:commons-io:2.5'
+    compile 'junit:junit:4.12'
+    compile 'com.jakewharton.fliptables:fliptables:1.0.2'
+    compile 'commons-io:commons-io:2.5'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
 }

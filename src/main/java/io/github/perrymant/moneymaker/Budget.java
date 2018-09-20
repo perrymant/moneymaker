@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static io.github.perrymant.moneymaker.TransactionType.*;
+import static io.github.perrymant.moneymaker.TransactionType.CREDIT;
 
 class Budget {
     private static final String[] HEADERS = new String[]{"Time", "Transaction Type", "Amount", "Balance", "Description"};
@@ -26,7 +26,7 @@ class Budget {
 
     private String[][] createData() {
         return report.stream()
-                .map(rl -> rl.getRowItems())
+                .map(ReportLine::getRowItems)
                 .collect(Collectors.toList())
                 .toArray(new String[report.size()][]);
     }
@@ -38,7 +38,6 @@ class Budget {
             report.add(new ReportLine(transaction, balance.get()));
         }
     }
-
 
 
 }

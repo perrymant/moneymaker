@@ -21,7 +21,6 @@ class TransactionMaker {
         transaction.setTransactionType(CREDIT);
         transaction.setAmount(125);
         transaction.setDescription("Got paid");
-//        transaction.updateBalance(transaction.getAmount());
         return transaction;
     }
 
@@ -31,7 +30,6 @@ class TransactionMaker {
         transaction.setTransactionType(DEBIT);
         transaction.setAmount(72);
         transaction.setDescription("Paid bill");
-//        transaction.updateBalance(transaction.getAmount());
         return transaction;
     }
 
