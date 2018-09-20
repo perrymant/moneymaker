@@ -104,3 +104,7 @@ The budget calculator should:
 This should be put under a `design/` directory in the root of your repository, 
 and comprise markdown files. (2)                                                                DONE
 
+
+### Backlog: 
+1. Display credit/debit amounts and balance in a GBP currency format as per ISO 4217
+Example: £1,234,567.89 GBP
