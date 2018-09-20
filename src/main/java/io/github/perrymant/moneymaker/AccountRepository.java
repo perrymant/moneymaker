@@ -8,8 +8,6 @@ import java.io.IOException;
 class AccountRepository {
     private ObjectMapper mapper = new ObjectMapper();
 
-    private ObjectMapper mapper = new ObjectMapper();
-
     Account read(String fileName) {
         try {
             return mapper.readValue(new File(fileName), Account.class);
