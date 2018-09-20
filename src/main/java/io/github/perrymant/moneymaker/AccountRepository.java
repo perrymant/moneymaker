@@ -8,6 +8,8 @@ import java.io.IOException;
 class AccountRepository {
     private ObjectMapper mapper = new ObjectMapper();
 
+    private ObjectMapper mapper = new ObjectMapper();
+
     Account read(String fileName) {
         try {
             return mapper.readValue(new File(fileName), Account.class);
@@ -17,7 +19,6 @@ class AccountRepository {
     }
 
     void write(Account data, String fileName) {
-        ObjectMapper mapper = new ObjectMapper();
         try {
             mapper.writeValue(new File(fileName), data);
         } catch (IOException e) {
