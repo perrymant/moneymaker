@@ -12,7 +12,7 @@ public class AccountRepositoryTest {
 
     private static final int AMOUNT = 24;
     private static final String DESCRIPTION = "new watch";
-    private static final String TIME = "2019/03/02";
+    private static final String TIME = "2019-03-02";
     private static final int BALANCE = 44;
     private static final String FILE_NAME = FileUtils.getTempDirectoryPath() + "/file_with_data_append_test";
 
