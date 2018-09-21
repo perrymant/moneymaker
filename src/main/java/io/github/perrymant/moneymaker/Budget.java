@@ -38,6 +38,4 @@ class Budget {
             report.add(new ReportLine(transaction, balance.get()));
         }
     }
-
-
 }
