@@ -6,7 +6,7 @@ import static java.lang.String.valueOf;
 import static org.junit.Assert.assertArrayEquals;
 
 public class ReportLineTest {
-    private static final String DATE_TIME = "2018/01/02";
+    private static final String DATE_TIME = "2018-01-02";
     private static final int AMOUNT = 150;
     private static final String DESCRIPTION = "Blah Blah - literally";
 
