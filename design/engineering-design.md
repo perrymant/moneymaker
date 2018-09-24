@@ -7,7 +7,6 @@ Additionally, the details of external resources will also be given.
 - make a `transaction`
 - generate a `report` to view transactions
 
-
 #### An overview:
 The transactions are stored and retrieved to and from the user's folder on their local drive at the location "~/.moneymaker". However, it is the filename that decides which account is being used to store transactions - therefor the system could (to be fulfilled on a future sprint) implement the possibility of allowing the user to choose the account, and view all historical transactions. At the moment, transactions can only be added to the file - there is no method of deleting transactions.  Furthermore, a report can be generated from these stored transactions for the user to view historic transactions and their balance. If no choice is made, or an erroneous choice is selected, then the application will print out a help file with the list of commands (to be implemented on a future sprint).
 
