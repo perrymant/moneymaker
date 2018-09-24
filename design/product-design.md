@@ -12,14 +12,14 @@ The following requests should be implemented:
 
 If no arguments, or erroneous arguments are given to `moneymaker` then the application will display:
 
->Error: Invalid argument type: 
+>Error: Invalid argument: 
 `moneymaker help` 
 >for more info.
 
 
 The `help` documentation:
 ```
-Moneymaker help
+moneymaker help
 NAME:
     moneymaker -- a budget calculator.
 SYNOPSIS:
