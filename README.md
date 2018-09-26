@@ -101,3 +101,9 @@ The budget calculator should:
     ```
 1. Design a way of adding transactions to an account. This should be put under a `design/` directory in the root of your repository, and comprise markdown files. (2)
 
+### Backlog:
+1. Display credit/debit amounts and balance in a GBP currency format as per ISO 4217.
+Example: £1,234,567.89 GBP
+1. Need to update README.md: Classes in use.
+1. Include the concept of Users, each with their own Id and Account.
+1. Windows home directory
