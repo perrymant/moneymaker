@@ -19,15 +19,14 @@ When `Main` is called, it starts the `Application` class, where a choice may be 
 `moneymaker transaction 200 "New watch" 2018-09-26`
 Notice that this follows the command format `moneymaker transaction [<amount>][<description>][<date>]`, and that the description **must** be included and in quotation marks, and that the date **must** include the hyphenation in order to be parsed.
 
-A diagram that illustrates the logic flow when a user records a transaction is as follows:
-![Moneymaker CD2 UML](mm-transaction.jpg "Moneymaker CD2 UML")
+
+![Moneymaker CD2 UML](transaction-design.jpg "Moneymaker CD2 UML")
 
 ## User requesting `report`:
 
 The `report` command will display all historic transactions formatted in a table with headings.
 
-The diagram that displays the logic flow when the user requests a report is as follows:
-![Moneymaker CD1 UML](mm-report.jpg "Moneymaker CD1 UML")
+![Moneymaker CD1 UML](report-diagram.jpg "Moneymaker CD1 UML")
 
 ## The file format of the stored transactions
 The JSON files are sored in the user’s home directory at the following locations: 
@@ -37,10 +36,15 @@ The JSON files are sored in the user’s home directory at the following locatio
 #### An example of a stored account will follow this structure:
 ```JSON
 {
-"Date" : "2019/03/03",
-"TransactionType" : "CREDIT",
-"Amount": 100,
-"Balance": 200,
-"Description": "Got paid"
+"transactions": [
+  {
+    "description": ...,
+    "date": ...,
+    "amount": ...,
+    "transactionType": ...,
+    "balance": ...,
+  },
+  ...
+]
 }
 ```
