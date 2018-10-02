@@ -1,31 +1,3 @@
-# Product design
-
-Please see the accompanying [Engineering Design](engineering-design.md).
-
-The budget calculator should have a way of adding transactions to an account.
-
-The following requests should be implemented:
-
-| Request              | CLI command                                            |
-|:---------------------|:-------------------------------------------------------|
-| Account transaction: | `moneymaker transaction <amount> <description> <date>` |
-| Check balance:       | `moneymaker report`                                    |
-| Help                 | `moneymaker help`                                      |
-
-Notes:
-- The amount can be positive and negative. 
-- A description **must** be included and surrounded by quotation marks.
-- the date **must** be given in the format `YYYY-MM-DD`
-- If no arguments, or erroneous arguments are given to `moneymaker` then the application will display:
-
->Error: Invalid argument: 
-`moneymaker help` 
->for more info.
-
-
-The `help` documentation:
-```
-moneymaker help
 NAME:
     moneymaker -- a budget calculator.
 SYNOPSIS:
@@ -59,4 +31,3 @@ EXAMPLES:
         ╟────────────┼──────────────────┼────────┼─────────┼─────────────╢
         ║ 2018-01-02 │ DEBIT            │ £0.72  │ £1.78   │ Paid bill   ║
         ╚════════════╧══════════════════╧════════╧═════════╧═════════════╝
-```
