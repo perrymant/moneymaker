@@ -2,11 +2,10 @@ package io.github.perrymant.moneymaker;
 
 import java.io.Serializable;
 
-import static java.lang.String.valueOf;
-
 public class ReportLine extends Transaction implements Serializable {
 
     private int balance;
+    private MoneyFormatter moneyFormatter = new MoneyFormatter();
 
     ReportLine() {
     }
@@ -23,8 +22,8 @@ public class ReportLine extends Transaction implements Serializable {
         return new String[]{
                 getTime(),
                 getTransactionType().name(),
-                valueOf(getAmount()),
-                valueOf(balance),
+                moneyFormatter.formatPounds(getAmount()),
+                moneyFormatter.formatPounds(getBalance()),
                 getDescription()
         };
     }
