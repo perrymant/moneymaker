@@ -1,6 +1,6 @@
 # Code of Conduct
 
-This code of conduct outlines the expectations for participants within this community (primarily, but by no means exclusively, the educational mentoring sessions provided by RG for TP). This code of conduct is our way to encourage good behavior and discourage bad behavior in our sessions and the open source community. Additionally, it is worthwile to consider the importance of this document from an educational point of view, the potential effect a CoC has within the open source community, society at large and the positive development of mankind.
+This code of conduct outlines the expectations for participants within this community. This code of conduct is our way to encourage good behavior and discourage bad behavior in our sessions and the open source community. Additionally, it is worthwhile to consider the importance of this document from an educational point of view, the potential effect a CoC has within the open source community, society at large and the positive development of mankind.
 
 We are committed to providing a welcoming and inspiring community for all and expect our code of conduct to be honored.
 
@@ -27,28 +27,5 @@ We encourage everyone to participate and are committed to building a community f
 
 Although this list cannot be exhaustive, we explicitly honor diversity in age, gender, gender identity or expression, culture, ethnicity, language, national origin, political beliefs, profession, race, religion, sexual orientation, socioeconomic status, and technical ability. We will not tolerate discrimination based on any of the protected characteristics above, including participants with disabilities.
 
-
-### Commitment to high standards:
-
-In accordance with IEEE-CS/ACM Joint Task Force on Software Engineering Ethics and Professional Practices, as student and professional software engineers we shall adhere to the following Eight Principles:
-
-1. PUBLIC - Software engineers shall act consistently with the public interest.
-
-2. CLIENT AND EMPLOYER - Software engineers shall act in a manner that is in the best interests of their client and employer consistent with the public interest.
-
-3. PRODUCT - Software engineers shall ensure that their products and related modifications meet the highest professional standards possible.
-
-4. JUDGMENT - Software engineers shall maintain integrity and independence in their professional judgment.
-
-5. MANAGEMENT - Software engineering managers and leaders shall subscribe to and promote an ethical approach to the management of software development and maintenance.
-
-6. PROFESSION - Software engineers shall advance the integrity and reputation of the profession consistent with the public interest.
-
-7. COLLEAGUES - Software engineers shall be fair to and supportive of their colleagues.
-
-8. SELF - Software engineers shall participate in lifelong learning regarding the practice of their profession and shall promote an ethical approach to the practice of the profession.
-
 ### Attribution
 This Code of Conduct is adapted from the Twitter CoC available at <https://github.com/twitter/code-of-conduct/blob/master/code-of-conduct.md> and the Contributor Covenant, version 1.4, available at <https://www.contributor-covenant.org/version/1/4/code-of-conduct.html>.
-
-The Eight Principles on Software Engineering is available at <https://www.computer.org/web/education/code-of-ethics>
