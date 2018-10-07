@@ -8,6 +8,17 @@ public class ApplicationTest {
 
     private TestLogger logger = new TestLogger();
     private Application target = new Application(logger);
+    private static final String REPORT = "Your report is:\n\n" +
+            "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
+            "║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +
+            "╠════════════╪══════════════════╪════════╪═════════╪═════════════╣\n" +
+            "║ 2018-01-01 │ CREDIT           │ £1.25  │ £1.25   │ Got paid    ║\n" +
+            "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
+            "║ 2018-01-01 │ CREDIT           │ £1.25  │ £2.50   │ Got paid    ║\n" +
+            "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
+            "║ 2018-01-02 │ DEBIT            │ £0.72  │ £1.78   │ Paid bill   ║\n" +
+            "╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
+
     private static final String HELP_MESSAGE = "" +
             "NAME:\n" +
             "    moneymaker -- a budget calculator.\n" +
@@ -55,10 +66,16 @@ public class ApplicationTest {
         Assert.assertNotEquals(HELP_MESSAGE, logger.getMessage());
     }
 
+    @Test
+    public void printsReportIfReportIsGiven() {
+        target.start(new String[]{"report"});
+        Assert.assertEquals(REPORT, logger.getMessage());
+    }
+
     private class TestLogger implements Logger {
         private String message;
 
-        public String getMessage() {
+        String getMessage() {
             return message;
         }
 
