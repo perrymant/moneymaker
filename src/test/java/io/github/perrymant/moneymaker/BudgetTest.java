@@ -12,7 +12,7 @@ public class BudgetTest {
     private static final String DATE_TIME = "2018-01-02";
     private Balance balance = new Balance();
     private List<Transaction> transactions = new ArrayList<>();
-    private Budget target = new Budget(balance, transactions);
+    private DefaultBudget target = new DefaultBudget(balance, transactions);
 
     @Test
     public void givenDebitTransaction_canHaveNegativeBalance() {
@@ -25,7 +25,7 @@ public class BudgetTest {
     public void useOfBudgetClassToGenerateTable() {
         final Balance balance = new Balance();
         List<Transaction> transactions = new TransactionMaker().getTransactions();
-        final Budget budget = new Budget(balance, transactions);
+        final DefaultBudget budget = new DefaultBudget(balance, transactions);
         String expected = "" +
                 "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
                 "║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +

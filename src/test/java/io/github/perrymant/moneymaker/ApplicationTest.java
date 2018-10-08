@@ -6,9 +6,17 @@ import org.junit.Test;
 
 public class ApplicationTest {
 
+    private static final String ERROR = "" +
+            "Error: Invalid argument:\n" +
+            "$ moneymaker help\n" +
+            "for more info.";
+    private static final String RANDOMSTRING = "random stuff here";
+    private static final String HELP_MORE_ARGS = "help with more args";
+    private static final String REPORT_MORE_ARGS = "report more args given";
+
     private TestLogger logger = new TestLogger();
     private Application target = new Application(logger);
-    private static final String REPORT = "Your report is:\n\n" +
+    private static final String REPORT = "" +
             "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
             "║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +
             "╠════════════╪══════════════════╪════════╪═════════╪═════════════╣\n" +
@@ -55,8 +63,32 @@ public class ApplicationTest {
             "        ╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
 
     @Test
-    public void printsHelpMessageIfHelpIsGiven() {
+    public void noArgumentsIsGiven_printsError() {
+        target.start(new String[]{});
+        Assert.assertEquals(ERROR, logger.getMessage());
+    }
+
+    @Test
+    public void reportIsGiven_printsReport() {
+        target.start(new String[]{"report"});
+        Assert.assertEquals(REPORT, logger.getMessage());
+    }
+
+    @Test
+    public void reportWithOtherArgsIsGiven_printsReport() {
+        target.start(new String[]{REPORT_MORE_ARGS});
+        Assert.assertEquals(REPORT, logger.getMessage());
+    }
+
+    @Test
+    public void helpIsGiven_printsHelp() {
         target.start(new String[]{"help"});
+        Assert.assertEquals(HELP_MESSAGE, logger.getMessage());
+    }
+
+    @Test
+    public void helpWithOtherArgsIsGiven_printsHelp() {
+        target.start(new String[]{HELP_MORE_ARGS});
         Assert.assertEquals(HELP_MESSAGE, logger.getMessage());
     }
 
@@ -67,9 +99,21 @@ public class ApplicationTest {
     }
 
     @Test
-    public void printsReportIfReportIsGiven() {
-        target.start(new String[]{"report"});
-        Assert.assertEquals(REPORT, logger.getMessage());
+    public void multipleArgsAfterHelpGiven_printHelp() {
+        target.start(new String[]{});
+        Assert.assertNotEquals(HELP_MESSAGE, logger.getMessage());
+    }
+
+    @Test
+    public void emptyStringGiven_printsError() {
+        target.start(new String[]{""});
+        Assert.assertEquals(ERROR, logger.getMessage());
+    }
+
+    @Test
+    public void randomStringGiven_printsError() {
+        target.start(new String[]{RANDOMSTRING});
+        Assert.assertEquals(ERROR, logger.getMessage());
     }
 
     private class TestLogger implements Logger {
