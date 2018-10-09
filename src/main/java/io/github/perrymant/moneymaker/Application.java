@@ -1,31 +1,43 @@
 package io.github.perrymant.moneymaker;
 
+import java.util.Arrays;
+
 class Application {
-    private final DefaultBudget budget = new DefaultBudget(new Balance(), new TransactionMaker().getTransactions());
+    private final Budget budget;
     private final FileReader reader = new FileReader();
     private final Logger logger;
 
-    private static final String HELP_TXT = "moneymaker-help.txt";
-    private static final String ERROR = "" +
+    private static final String HELP_FIXTURE_PATH = "moneymaker-help.txt";
+    private static final String INVALID_ARGUMENT_ERROR_MESSAGE = "" +
             "Error: Invalid argument:\n" +
             "$ moneymaker help\n" +
             "for more info.";
 
-    Application(Logger logger) {
+    Application(Logger logger, Budget budget) {
         this.logger = logger;
+        this.budget = budget;
     }
 
     void start(String[] args) {
         if (args.length == 0) {
-            logger.info(ERROR);
+            getInfo(INVALID_ARGUMENT_ERROR_MESSAGE);
         } else {
-            if ("report".equals(args[0].split(" ")[0])) {
-                logger.info(budget.report());
-            } else if ("help".equals(args[0].split(" ")[0])) {
-                logger.info(reader.read(HELP_TXT));
+            if ("report".equals(args[0])) {
+                getInfo(budget.report());
+            } else if ("help".equals(args[0])) {
+                getInfo(reader.read(HELP_FIXTURE_PATH));
             } else {
-                logger.info(ERROR);
+                getInfo(INVALID_ARGUMENT_ERROR_MESSAGE);
             }
         }
     }
+
+    private void getInfo(String read) {
+        getLogger().info(read);
+    }
+
+    private Logger getLogger() {
+        return logger;
+    }
+
 }

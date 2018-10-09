@@ -3,19 +3,25 @@ package io.github.perrymant.moneymaker;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ApplicationTest {
 
-    private static final String ERROR = "" +
+    private static final String INVALID_ARGUMENT_ERROR_MESSAGE = "" +
             "Error: Invalid argument:\n" +
             "$ moneymaker help\n" +
             "for more info.";
-    private static final String RANDOMSTRING = "random stuff here";
     private static final String HELP_MORE_ARGS = "help with more args";
     private static final String REPORT_MORE_ARGS = "report more args given";
+    private static final String RANDOMSTRING = "random stuff here";
 
     private TestLogger logger = new TestLogger();
-    private Application target = new Application(logger);
+    private List<Transaction> transactions = new TransactionMaker().getTransactions();
+    private Balance balance = new Balance();
+    private Budget budget = new DefaultBudget(balance, transactions);
+    private Application target = new Application(logger, budget);
     private static final String REPORT = "" +
             "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
             "║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +
@@ -65,7 +71,7 @@ public class ApplicationTest {
     @Test
     public void noArgumentsIsGiven_printsError() {
         target.start(new String[]{});
-        Assert.assertEquals(ERROR, logger.getMessage());
+        Assert.assertEquals(INVALID_ARGUMENT_ERROR_MESSAGE, logger.getMessage());
     }
 
     @Test
@@ -75,9 +81,9 @@ public class ApplicationTest {
     }
 
     @Test
-    public void reportWithOtherArgsIsGiven_printsReport() {
+    public void reportWithOtherArgsIsGiven_printsINVALID_ARGUMENT_ERROR_MESSAGE() {
         target.start(new String[]{REPORT_MORE_ARGS});
-        Assert.assertEquals(REPORT, logger.getMessage());
+        Assert.assertEquals(INVALID_ARGUMENT_ERROR_MESSAGE, logger.getMessage());
     }
 
     @Test
@@ -87,34 +93,24 @@ public class ApplicationTest {
     }
 
     @Test
-    public void helpWithOtherArgsIsGiven_printsHelp() {
+    public void helpWithOtherArgsIsGiven_printsINVALID_ARGUMENT_ERROR_MESSAGE() {
         target.start(new String[]{HELP_MORE_ARGS});
-        Assert.assertEquals(HELP_MESSAGE, logger.getMessage());
+        Assert.assertEquals(INVALID_ARGUMENT_ERROR_MESSAGE, logger.getMessage());
     }
 
     @Test
-    public void doesntPrintHelpWithNoArgs() {
-        target.start(new String[]{});
-        Assert.assertNotEquals(HELP_MESSAGE, logger.getMessage());
-    }
-
-    @Test
-    public void multipleArgsAfterHelpGiven_printHelp() {
-        target.start(new String[]{});
-        Assert.assertNotEquals(HELP_MESSAGE, logger.getMessage());
-    }
-
-    @Test
-    public void emptyStringGiven_printsError() {
+    public void emptyStringGiven_printsINVALID_ARGUMENT_ERROR_MESSAGE() {
         target.start(new String[]{""});
-        Assert.assertEquals(ERROR, logger.getMessage());
+        Assert.assertEquals(INVALID_ARGUMENT_ERROR_MESSAGE, logger.getMessage());
     }
 
     @Test
-    public void randomStringGiven_printsError() {
+    public void randomStringGiven_printsINVALID_ARGUMENT_ERROR_MESSAGE() {
         target.start(new String[]{RANDOMSTRING});
-        Assert.assertEquals(ERROR, logger.getMessage());
+        Assert.assertEquals(INVALID_ARGUMENT_ERROR_MESSAGE, logger.getMessage());
     }
+
+
 
     private class TestLogger implements Logger {
         private String message;

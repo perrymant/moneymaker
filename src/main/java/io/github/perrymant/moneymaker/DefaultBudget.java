@@ -25,16 +25,14 @@ class DefaultBudget implements Budget {
         return FlipTable.of(HEADERS, createData());
     }
 
-    @Override
-    public String[][] createData() {
+    private String[][] createData() {
         return report.stream()
                 .map(ReportLine::getRowItems)
                 .collect(Collectors.toList())
                 .toArray(new String[report.size()][]);
     }
 
-    @Override
-    public void updateBalance() {
+    private void updateBalance() {
         for (final Transaction transaction : transactions) {
             final int sign = transaction.getTransactionType() == CREDIT ? 1 : -1;
             balance.increment(sign * transaction.getAmount());
