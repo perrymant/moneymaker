@@ -3,9 +3,7 @@ package io.github.perrymant.moneymaker;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
-
 
 public class ApplicationTest {
 
@@ -14,14 +12,17 @@ public class ApplicationTest {
             "$ moneymaker help\n" +
             "for more info.";
     private static final String HELP_MORE_ARGS = "help with more args";
-    private static final String REPORT_MORE_ARGS = "report more args given";
     private static final String RANDOMSTRING = "random stuff here";
+    private String[] EMPTY_STRING = new String[]{""};
+    private String[] REPORT_STRING = new String[]{"report"};
+    private String UPDATED_REPORT_STRING = "is this the string I need to update...";
+
+    private String[] REPORT_MORE_ARGS = new String[]{"report more args given"};
 
     private TestLogger logger = new TestLogger();
     private List<Transaction> transactions = new TransactionMaker().getTransactions();
     private Balance balance = new Balance();
-    private Budget budget = new DefaultBudget(balance, transactions);
-    private Application target = new Application(logger, budget);
+    private TestBudget budget = new TestBudget(balance, transactions);
     private static final String REPORT = "" +
             "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
             "║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +
@@ -68,48 +69,62 @@ public class ApplicationTest {
             "        ║ 2018-01-02 │ DEBIT            │ £0.72  │ £1.78   │ Paid bill   ║\n" +
             "        ╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
 
+
+    @Test
+    public void loopedTest() {
+        String[][] argsTestContentArray = new String[][]{
+                EMPTY_STRING,
+                REPORT_STRING,
+                REPORT_MORE_ARGS};
+
+        for (String[] thing : argsTestContentArray) {
+            new Application(logger, budget, thing).start();
+            System.out.println(logger.getMessage());
+//            Assert.assertEquals(, logger.getMessage());
+        }
+    }
+
     @Test
     public void noArgumentsIsGiven_printsError() {
-        target.start(new String[]{});
+        new Application(logger, budget, EMPTY_STRING).start();
         Assert.assertEquals(INVALID_ARGUMENT_ERROR_MESSAGE, logger.getMessage());
     }
 
     @Test
     public void reportIsGiven_printsReport() {
-        target.start(new String[]{"report"});
-        Assert.assertEquals(REPORT, logger.getMessage());
+        new Application(logger, budget, REPORT_STRING).start();
+        Assert.assertEquals(UPDATED_REPORT_STRING, logger.getMessage());
     }
 
     @Test
     public void reportWithOtherArgsIsGiven_printsINVALID_ARGUMENT_ERROR_MESSAGE() {
-        target.start(new String[]{REPORT_MORE_ARGS});
+        new Application(logger, budget, REPORT_MORE_ARGS).start();
         Assert.assertEquals(INVALID_ARGUMENT_ERROR_MESSAGE, logger.getMessage());
     }
 
     @Test
     public void helpIsGiven_printsHelp() {
-        target.start(new String[]{"help"});
+        new Application(logger, budget, new String[]{"help"}).start();
         Assert.assertEquals(HELP_MESSAGE, logger.getMessage());
     }
 
     @Test
     public void helpWithOtherArgsIsGiven_printsINVALID_ARGUMENT_ERROR_MESSAGE() {
-        target.start(new String[]{HELP_MORE_ARGS});
+        new Application(logger, budget, new String[]{HELP_MORE_ARGS}).start();
         Assert.assertEquals(INVALID_ARGUMENT_ERROR_MESSAGE, logger.getMessage());
     }
 
     @Test
     public void emptyStringGiven_printsINVALID_ARGUMENT_ERROR_MESSAGE() {
-        target.start(new String[]{""});
+        new Application(logger, budget, new String[]{""}).start();
         Assert.assertEquals(INVALID_ARGUMENT_ERROR_MESSAGE, logger.getMessage());
     }
 
     @Test
     public void randomStringGiven_printsINVALID_ARGUMENT_ERROR_MESSAGE() {
-        target.start(new String[]{RANDOMSTRING});
+        new Application(logger, budget, new String[]{RANDOMSTRING}).start();
         Assert.assertEquals(INVALID_ARGUMENT_ERROR_MESSAGE, logger.getMessage());
     }
-
 
 
     private class TestLogger implements Logger {
@@ -124,5 +139,7 @@ public class ApplicationTest {
             this.message = message;
         }
     }
+
+
 }
 

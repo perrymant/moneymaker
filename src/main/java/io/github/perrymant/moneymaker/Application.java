@@ -1,11 +1,10 @@
 package io.github.perrymant.moneymaker;
 
-import java.util.Arrays;
-
 class Application {
     private final Budget budget;
     private final FileReader reader = new FileReader();
     private final Logger logger;
+    private Object[] args;
 
     private static final String HELP_FIXTURE_PATH = "moneymaker-help.txt";
     private static final String INVALID_ARGUMENT_ERROR_MESSAGE = "" +
@@ -13,31 +12,26 @@ class Application {
             "$ moneymaker help\n" +
             "for more info.";
 
-    Application(Logger logger, Budget budget) {
+    Application(Logger logger, Budget budget, Object[] args) {
         this.logger = logger;
         this.budget = budget;
+        this.args = args;
     }
 
-    void start(String[] args) {
-        if (args.length == 0) {
-            getInfo(INVALID_ARGUMENT_ERROR_MESSAGE);
-        } else {
+    void start() {
+        logger.info(stringToLogger());
+    }
+
+    private String stringToLogger() {
+        if (args.length > 0) {
             if ("report".equals(args[0])) {
-                getInfo(budget.report());
-            } else if ("help".equals(args[0])) {
-                getInfo(reader.read(HELP_FIXTURE_PATH));
-            } else {
-                getInfo(INVALID_ARGUMENT_ERROR_MESSAGE);
+                return budget.report();
+            }
+            if ("help".equals(args[0])) {
+                return reader.read(HELP_FIXTURE_PATH);
             }
         }
-    }
-
-    private void getInfo(String read) {
-        getLogger().info(read);
-    }
-
-    private Logger getLogger() {
-        return logger;
+        return INVALID_ARGUMENT_ERROR_MESSAGE;
     }
 
 }
