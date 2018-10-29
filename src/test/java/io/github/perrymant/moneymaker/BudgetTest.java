@@ -24,7 +24,7 @@ public class BudgetTest {
     @Test
     public void useOfBudgetClassToGenerateTable() {
         final Balance balance = new Balance();
-        List<Transaction> transactions = new TransactionMaker().getTransactions();
+        List<Transaction> transactions = new DefaultTransactionMaker().getTransactions();
         final Budget budget = new Budget(balance, transactions);
         String expected = "" +
                 "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +

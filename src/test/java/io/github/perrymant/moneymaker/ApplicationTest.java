@@ -1,13 +1,26 @@
 package io.github.perrymant.moneymaker;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.List;
+
+import static io.github.perrymant.moneymaker.Application.ERROR_MESSAGE;
+import static java.util.Arrays.asList;
+import static org.junit.Assert.assertEquals;
 
 
 public class ApplicationTest {
 
-    private TestLogger logger = new TestLogger();
-    private Application target = new Application(logger);
+    private static final String PRE_DETERMINED_REPORT = "" +
+            "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
+            "║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +
+            "╠════════════╪══════════════════╪════════╪═════════╪═════════════╣\n" +
+            "║ 2018-01-04 │ CREDIT           │ £1.25  │ £1.25   │ Got paid    ║\n" +
+            "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
+            "║ 2018-01-02 │ DEBIT            │ £0.72  │ £0.53   │ Paid bill   ║\n" +
+            "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
+            "║ 2018-01-01 │ CREDIT           │ £1.25  │ £1.78   │ Got paid    ║\n" +
+            "╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
     private static final String HELP_MESSAGE = "" +
             "NAME:\n" +
             "    moneymaker -- a budget calculator.\n" +
@@ -43,22 +56,56 @@ public class ApplicationTest {
             "        ║ 2018-01-02 │ DEBIT            │ £0.72  │ £1.78   │ Paid bill   ║\n" +
             "        ╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
 
+    private TestLogger logger = new TestLogger();
+    private TestTransactionMaker testTransactionMaker = new TestTransactionMaker();
+    private Application target = new Application(logger, testTransactionMaker);
+
     @Test
-    public void printsHelpMessageIfHelpIsGiven() {
+    public void givenHelpLogsHelpMessage() {
         target.start(new String[]{"help"});
-        Assert.assertEquals(HELP_MESSAGE, logger.getMessage());
+        assertEquals(HELP_MESSAGE, logger.getMessage());
     }
 
     @Test
-    public void doesntPrintHelpWithNoArgs() {
+    public void givenNoArgsLogsErrorMessage() {
         target.start(new String[]{});
-        Assert.assertNotEquals(HELP_MESSAGE, logger.getMessage());
+        assertEquals(ERROR_MESSAGE, logger.getMessage());
+    }
+
+    @Test
+    public void givenReportLogsReport() {
+        target.start(new String[]{"report"});
+        assertEquals(PRE_DETERMINED_REPORT, logger.getMessage());
+    }
+
+    @Test
+    public void givenGarbageLogsErrorMessage() {
+        target.start(new String[]{"fish"});
+        assertEquals(ERROR_MESSAGE, logger.getMessage());
+    }
+
+    private class TestTransactionMaker implements TransactionMaker {
+        public List<Transaction> getTransactions() {
+            return asList(
+                    makeTransaction("2018-01-04", TransactionType.CREDIT, 125, "Got paid"),
+                    makeTransaction("2018-01-02", TransactionType.DEBIT, 72, "Paid bill"),
+                    makeTransaction("2018-01-01", TransactionType.CREDIT, 125, "Got paid"));
+        }
+
+        private Transaction makeTransaction(String time, TransactionType type, int amount, String description) {
+            final Transaction transaction = new Transaction();
+            transaction.setTransactionType(type);
+            transaction.setTime(time);
+            transaction.setDescription(description);
+            transaction.setAmount(amount);
+            return transaction;
+        }
     }
 
     private class TestLogger implements Logger {
         private String message;
 
-        public String getMessage() {
+        String getMessage() {
             return message;
         }
 
