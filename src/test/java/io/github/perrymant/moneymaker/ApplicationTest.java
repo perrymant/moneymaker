@@ -61,13 +61,13 @@ public class ApplicationTest {
     private Application target = new Application(logger, testTransactionMaker);
 
     @Test
-    public void printsHelpMessageIfHelpIsGiven() {
+    public void givenHelpLogsHelpMessage() {
         target.start(new String[]{"help"});
         assertEquals(HELP_MESSAGE, logger.getMessage());
     }
 
     @Test
-    public void doesntPrintHelpWithNoArgs() {
+    public void givenNoArgsLogsErrorMessage() {
         target.start(new String[]{});
         assertEquals(ERROR_MESSAGE, logger.getMessage());
     }
