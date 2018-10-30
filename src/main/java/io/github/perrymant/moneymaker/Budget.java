@@ -38,4 +38,13 @@ class Budget {
             report.add(new ReportLine(transaction, balance.get()));
         }
     }
+
+    void transaction(String args) {
+        TransactionExtractor transactionExtractor = new TransactionExtractor();
+        final Transaction transaction = transactionExtractor.extractComponents(args).get(0);
+        final int sign = transaction.getTransactionType() == CREDIT ? 1 : -1;
+        balance.increment(sign * transaction.getAmount());
+        report.add(new ReportLine(transactionExtractor.extractComponents(args).get(0), balance.get()));
+//        updateBalance();
+    }
 }

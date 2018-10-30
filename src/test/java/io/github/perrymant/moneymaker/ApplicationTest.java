@@ -71,8 +71,6 @@ public class ApplicationTest {
     private TestLogger logger = new TestLogger();
     private TestTransactionMaker testTransactionMaker = new TestTransactionMaker();
     private Application target = new Application(logger, testTransactionMaker);
-    private String TransactionExample;
-    private String[] transactionExample;
 
     @Test
     public void givenHelpLogsHelpMessage() {
@@ -99,14 +97,8 @@ public class ApplicationTest {
     }
 
     @Test
-    public void givenTransaction_100_aWatch_20181030_addsToAccount() {
-        transactionExample = new String[]{"transaction 100 \"A Watch\" 2018-10-30"};
-        TransactionExtractor transactionValue = new TransactionExtractor();
-        String TIME = (String) transactionValue.extractComponents(transactionExample, "time");
-        TransactionType TYPE = (TransactionType) transactionValue.extractComponents(transactionExample, "type");
-        int AMOUNT = Integer.valueOf((Integer) transactionValue.extractComponents(transactionExample, "amount"));
-        String DESCRIPTION = (String) transactionValue.extractComponents(transactionExample, "description");
-        testTransactionMaker.makeTransaction(TIME, TYPE, AMOUNT, DESCRIPTION);
+    public void givenTransactionArg_makeTransaction() {
+        String[] transactionExample = new String[]{"transaction 100 \"A Watch\" 2018-10-30"};
         target.start(transactionExample);
         target.start(new String[]{"report"});
         assertEquals(REPORT_AFTER_TRANSACTION, logger.getMessage());
@@ -134,7 +126,6 @@ public class ApplicationTest {
         private String message;
 
         String getMessage() {
-            System.out.println(message);
             return message;
         }
 
