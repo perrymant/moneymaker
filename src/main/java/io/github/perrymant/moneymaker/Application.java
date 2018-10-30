@@ -6,6 +6,7 @@ class Application {
     private final FileReader reader = new FileReader();
 
     private final Logger logger;
+    private String TEMP_TRANSACTION = "Transaction Made";
 
     Application(Logger logger, TransactionMaker transactionMaker) {
         this.logger = logger;
@@ -18,6 +19,8 @@ class Application {
                 logger.info(reader.read("moneymaker-help.txt"));
             } else if ("report".equals(args[0])) {
                 logger.info(budget.report());
+            } else if ("transaction".equals(args[0])) {
+                logger.info(budget.report());
             } else {
                 logger.info(ERROR_MESSAGE);
             }
@@ -25,4 +28,5 @@ class Application {
             logger.info(ERROR_MESSAGE);
         }
     }
+
 }

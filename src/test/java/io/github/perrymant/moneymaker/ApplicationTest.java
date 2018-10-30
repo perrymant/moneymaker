@@ -21,6 +21,18 @@ public class ApplicationTest {
             "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
             "║ 2018-01-01 │ CREDIT           │ £1.25  │ £1.78   │ Got paid    ║\n" +
             "╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
+    private static final String REPORT_AFTER_TRANSACTION = "" +
+            "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
+            "║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +
+            "╠════════════╪══════════════════╪════════╪═════════╪═════════════╣\n" +
+            "║ 2018-01-04 │ CREDIT           │ £1.25  │ £1.25   │ Got paid    ║\n" +
+            "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
+            "║ 2018-01-02 │ DEBIT            │ £0.72  │ £0.53   │ Paid bill   ║\n" +
+            "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
+            "║ 2018-01-01 │ CREDIT           │ £1.25  │ £1.78   │ Got paid    ║\n" +
+            "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
+            "║ 2018-10-30 │ CREDIT           │ £1.00  │ £2.78   │ A Watch     ║\n" +
+            "╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
     private static final String HELP_MESSAGE = "" +
             "NAME:\n" +
             "    moneymaker -- a budget calculator.\n" +
@@ -59,6 +71,8 @@ public class ApplicationTest {
     private TestLogger logger = new TestLogger();
     private TestTransactionMaker testTransactionMaker = new TestTransactionMaker();
     private Application target = new Application(logger, testTransactionMaker);
+    private String TransactionExample;
+    private String[] transactionExample;
 
     @Test
     public void givenHelpLogsHelpMessage() {
@@ -84,6 +98,20 @@ public class ApplicationTest {
         assertEquals(ERROR_MESSAGE, logger.getMessage());
     }
 
+    @Test
+    public void givenTransaction_100_aWatch_20181030_addsToAccount() {
+        transactionExample = new String[]{"transaction 100 \"A Watch\" 2018-10-30"};
+        TransactionExtractor transactionValue = new TransactionExtractor();
+        String TIME = (String) transactionValue.extractComponents(transactionExample, "time");
+        TransactionType TYPE = (TransactionType) transactionValue.extractComponents(transactionExample, "type");
+        int AMOUNT = Integer.valueOf((Integer) transactionValue.extractComponents(transactionExample, "amount"));
+        String DESCRIPTION = (String) transactionValue.extractComponents(transactionExample, "description");
+        testTransactionMaker.makeTransaction(TIME, TYPE, AMOUNT, DESCRIPTION);
+        target.start(transactionExample);
+        target.start(new String[]{"report"});
+        assertEquals(REPORT_AFTER_TRANSACTION, logger.getMessage());
+    }
+
     private class TestTransactionMaker implements TransactionMaker {
         public List<Transaction> getTransactions() {
             return asList(
@@ -106,6 +134,7 @@ public class ApplicationTest {
         private String message;
 
         String getMessage() {
+            System.out.println(message);
             return message;
         }
 
