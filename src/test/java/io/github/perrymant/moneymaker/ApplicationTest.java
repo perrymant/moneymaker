@@ -25,13 +25,13 @@ public class ApplicationTest {
             "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
             "║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +
             "╠════════════╪══════════════════╪════════╪═════════╪═════════════╣\n" +
-            "║ 2018-01-04 │ CREDIT           │ £1.25  │ £1.25   │ Got paid    ║\n" +
+            "║ 2018-10-30 │ CREDIT           │ £1.00  │ £1.00   │ A Watch     ║\n" +
             "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
-            "║ 2018-01-02 │ DEBIT            │ £0.72  │ £0.53   │ Paid bill   ║\n" +
+            "║ 2018-01-04 │ CREDIT           │ £1.25  │ £2.25   │ Got paid    ║\n" +
             "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
-            "║ 2018-01-01 │ CREDIT           │ £1.25  │ £1.78   │ Got paid    ║\n" +
+            "║ 2018-01-02 │ DEBIT            │ £0.72  │ £1.53   │ Paid bill   ║\n" +
             "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
-            "║ 2018-10-30 │ CREDIT           │ £1.00  │ £2.78   │ A Watch     ║\n" +
+            "║ 2018-01-01 │ CREDIT           │ £1.25  │ £2.78   │ Got paid    ║\n" +
             "╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
     private static final String HELP_MESSAGE = "" +
             "NAME:\n" +
@@ -98,7 +98,7 @@ public class ApplicationTest {
 
     @Test
     public void givenTransactionArg_makeTransaction() {
-        String[] transactionExample = new String[]{"transaction 100 \"A Watch\" 2018-10-30"};
+        String[] transactionExample = new String[]{"transaction", "100", "A Watch", "2018-10-30"};
         target.start(transactionExample);
         target.start(new String[]{"report"});
         assertEquals(REPORT_AFTER_TRANSACTION, logger.getMessage());

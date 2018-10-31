@@ -39,12 +39,11 @@ class Budget {
         }
     }
 
-    void transaction(String args) {
+    void transaction(String[] args) {
         TransactionExtractor transactionExtractor = new TransactionExtractor();
-        final Transaction transaction = transactionExtractor.extractComponents(args).get(0);
+        final Transaction transaction = transactionExtractor.extract(args);
         final int sign = transaction.getTransactionType() == CREDIT ? 1 : -1;
         balance.increment(sign * transaction.getAmount());
-        report.add(new ReportLine(transactionExtractor.extractComponents(args).get(0), balance.get()));
-//        updateBalance();
+        report.add(new ReportLine(transaction, balance.get()));
     }
 }

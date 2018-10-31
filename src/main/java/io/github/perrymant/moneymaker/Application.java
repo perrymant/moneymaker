@@ -18,8 +18,8 @@ class Application {
                 logger.info(reader.read("moneymaker-help.txt"));
             } else if ("report".equals(args[0])) {
                 logger.info(budget.report());
-            } else if ("transaction".equals(args[0].split(" ")[0])) {
-                budget.transaction(args[0]);
+            } else if ("transaction".equals(args[0])) {
+                budget.transaction(args);
             } else {
                 logger.info(ERROR_MESSAGE);
             }
