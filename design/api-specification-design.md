@@ -22,22 +22,23 @@ The `report` request obtains a report of their account.
 
 An example `report statement` for status code 200 :
 ```
-╔════════════╤══════════════════╤════════╤═════════╤═════════════╗
-║ Time       │ Transaction Type │ Amount │ Balance │ Description ║
-╠════════════╪══════════════════╪════════╪═════════╪═════════════╣
-║ 2018-01-02 │ DEBIT            │ £0.72  │ £1.78   │ Paid bill   ║
-╟────────────┼──────────────────┼────────┼─────────┼─────────────╢
-║ 2018-01-01 │ CREDIT           │ £1.25  │ £2.50   │ Got paid    ║
-╟────────────┼──────────────────┼────────┼─────────┼─────────────╢
-║ 2018-01-01 │ CREDIT           │ £1.25  │ £1.25   │ Got paid    ║
-╚════════════╧══════════════════╧════════╧═════════╧═════════════╝
+{
+"report": [
+  {
+    "date": ...,
+    "amount": ...,
+    "balance": ...,
+    "description": ...,
+  },
+  ...
+]
+}
 ```
 
-- 500:  "Something went wrong. Please try again later.":
+- 500:  "The server failed to fulfill an apparently valid request.":
 
 ```json
 {
-    "status" : "error",
     "message" : "Something went wrong. Please try again later."
 }
 ```
@@ -45,7 +46,7 @@ An example `report statement` for status code 200 :
 
 
 ## 2. transaction
-A `transaction` request sends it to update their account.
+A `transaction` request is sent to append a new transaction to an account.
 
 #### Request
 | Method | URL             |
@@ -55,27 +56,29 @@ A `transaction` request sends it to update their account.
 #### Response
 
 - 200: A `transaction statement` will be sent:
-```json
+```
 {
-  "transactions": [...]
+"transaction": {
+    "date": ...,
+    "amount": ...,
+    "description": ...,
+  }
 }
 ```
 
-- 400:  ">Error: Invalid argument: `moneymaker help` >for more info.":
+- 400:  "The request contains bad syntax or cannot be fulfilled.":
 
 ```json
 {
-    "status" : "fail",
-    "data" : { "Error" : "Error: amount missing" }
+    "data" : { "Error" : "The request contains bad syntax or cannot be fulfilled." }
 }
 ```
 
-- 500:  "Something went wrong. Please try again later.":
+- 500:  "The server failed to fulfill an apparently valid request.":
 
 ```json
 {
-    "status" : "error",
-    "message" : "Unable to communicate with database"
+    "message" : "The server failed to fulfill an apparently valid request."
 }
 ```
 
