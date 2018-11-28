@@ -11,39 +11,28 @@ The `report` request obtains a report of their account.
 
 #### Response
 - 200: a `report statement` will be sent:
-
-```json
+```
 {
-    "data" : {
-        "report" : "---report statement-(see below)---"
-     }
+"data" : {
+    "report" : [
+                  {
+                    "date": "ISO8601 format",
+                    "amount": "in GBP pence",
+                    "balance": "in GBP pence",
+                    "description": "short text",
+                  },
+                  ...
+                ]
+         }
 }
 ```
 
-An example `report statement` for status code 200 :
-```
-{
-"report": [
-  {
-    "date": ...,
-    "amount": ...,
-    "balance": ...,
-    "description": ...,
-  },
-  ...
-]
-}
-```
-
-- 500:  "The server failed to fulfill an apparently valid request.":
-
+- 500:  "Something went wrong. Please try again later.":
 ```json
 {
     "message" : "Something went wrong. Please try again later."
 }
 ```
-
-
 
 ## 2. transaction
 A `transaction` request is sent to append a new transaction to an account.
@@ -59,26 +48,24 @@ A `transaction` request is sent to append a new transaction to an account.
 ```
 {
 "transaction": {
-    "date": ...,
-    "amount": ...,
-    "description": ...,
+    "date": "ISO 8601 format YYYY-MM-DD",
+    "amount": "in GBP pence",
+    "description": "short text",
   }
 }
 ```
 
-- 400:  "The request contains bad syntax or cannot be fulfilled.":
-
+- 400:  "The request contains bad syntax or cannot be completed.":
 ```json
 {
-    "data" : { "Error" : "The request contains bad syntax or cannot be fulfilled." }
+    "data" : { "Error" : "The request contains bad syntax or cannot be completed." }
 }
 ```
 
-- 500:  "The server failed to fulfill an apparently valid request.":
-
+- 500:  "Something went wrong. Please try again later.":
 ```json
 {
-    "message" : "The server failed to fulfill an apparently valid request."
+    "message" : "Something went wrong. Please try again later."
 }
 ```
 
