@@ -11,19 +11,16 @@ The `report` request obtains a report of their account.
 
 #### Response
 - 200: a `report statement` will be sent:
-```
+```json
 {
-"data" : {
-    "report" : [
-                  {
-                    "date": "ISO8601 format",
-                    "amount": "in GBP pence",
-                    "balance": "in GBP pence",
-                    "description": "short text",
-                  },
-                  ...
-                ]
-         }
+  "report": [
+    {
+      "date": "2018-11-28T17:34:45Z",
+      "amount": 1234,
+      "balance": 12345678,
+      "description": "blah"
+    }
+  ]
 }
 ```
 
@@ -45,12 +42,12 @@ A `transaction` request is sent to append a new transaction to an account.
 #### Response
 
 - 200: A `transaction statement` will be sent:
-```
+```json
 {
-"transaction": {
-    "date": "ISO 8601 format YYYY-MM-DD",
-    "amount": "in GBP pence",
-    "description": "short text",
+  "transaction": {
+    "date": "2018-11-28T17:34:45Z",
+    "amount": 1234,
+    "description": "blah"
   }
 }
 ```
@@ -68,6 +65,3 @@ A `transaction` request is sent to append a new transaction to an account.
     "message" : "Something went wrong. Please try again later."
 }
 ```
-
-
-
