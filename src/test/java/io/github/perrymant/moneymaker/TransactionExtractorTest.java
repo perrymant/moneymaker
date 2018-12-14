@@ -17,7 +17,7 @@ public class TransactionExtractorTest {
         // Assert
         assertEquals(100, transaction.getAmount());
         assertEquals("A Watch", transaction.getDescription());
-        assertEquals("2018-10-30", transaction.getTime());
+        assertEquals("2018-10-30", transaction.getDateTime());
         assertEquals(TransactionType.CREDIT, transaction.getTransactionType());
     }
 
@@ -33,7 +33,7 @@ public class TransactionExtractorTest {
         // Assert
         assertEquals(-100, transaction.getAmount());
         assertEquals("A Watch", transaction.getDescription());
-        assertEquals("2018-10-30", transaction.getTime());
+        assertEquals("2018-10-30", transaction.getDateTime());
         assertEquals(TransactionType.DEBIT, transaction.getTransactionType());
     }
 }

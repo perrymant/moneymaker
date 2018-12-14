@@ -26,7 +26,7 @@ public class ReportLineTest {
 
     private Transaction makeTransaction() {
         final Transaction transaction = new Transaction();
-        transaction.setTime(DATE_TIME);
+        transaction.setDateTime(DATE_TIME);
         transaction.setTransactionType(TransactionType.CREDIT);
         transaction.setAmount(AMOUNT);
         transaction.setDescription(DESCRIPTION);

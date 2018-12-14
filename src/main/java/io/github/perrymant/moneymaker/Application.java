@@ -1,5 +1,11 @@
 package io.github.perrymant.moneymaker;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
+
+@RestController
 class Application {
     static final String ERROR_MESSAGE = "Error: Invalid argument: moneymaker help for more info.";
     private final Budget budget;
@@ -7,10 +13,12 @@ class Application {
 
     private final Logger logger;
 
+
     Application(Logger logger, TransactionMaker transactionMaker) {
         this.logger = logger;
         this.budget = new Budget(new Balance(), transactionMaker.getTransactions());
     }
+
 
     void start(String[] args) {
         if (args.length > 0) {
@@ -27,5 +35,29 @@ class Application {
             logger.info(ERROR_MESSAGE);
         }
     }
+
+//    @GetMapping("/report")
+//    public Map<String, String> mapReport() {
+//        return budget.reportJSON();
+//    }
+
+/*
+{
+  "report": [
+    {
+      "dateTime": "2018-11-28T17:34:45Z",
+      "amount": 1234,
+      "balance": 12345678,
+      "description": "blah"
+    }
+  ]
+}
+*/
+
+    @GetMapping("/transaction")
+    public void mapTransaction(String[] args) {
+        budget.transaction(args);
+    }
+
 
 }
