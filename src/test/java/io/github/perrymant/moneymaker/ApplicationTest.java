@@ -46,7 +46,7 @@ public class ApplicationTest {
             "OPTIONS:\n" +
             "    transaction [<amount>][\"<description>\"][<date>]\n" +
             "        To add credit you must add a description.\n" +
-            "        If no dateTime is provided then the current dateTime will be used.\n" +
+            "        If no date is provided then the current date will be used.\n" +
             "    report\n" +
             "        The report command will print out all transactions in a table.\n" +
             "    help\n" +
@@ -58,15 +58,15 @@ public class ApplicationTest {
             "    moneymaker report\n" +
             "\n" +
             "    *** Output ***\n" +
-            "   ╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
-            "   ║ DateTime   │ Transaction Type │ Amount │ Balance │ Description ║\n" +
-            "   ╠════════════╪══════════════════╪════════╪═════════╪═════════════╣\n" +
-            "   ║ 2018-01-04 │ CREDIT           │ £1.25  │ £1.25   │ Got paid    ║\n" +
-            "   ╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
-            "   ║ 2018-01-02 │ DEBIT            │ £0.72  │ £0.53   │ Paid bill   ║\n" +
-            "   ╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
-            "   ║ 2018-01-01 │ CREDIT           │ £1.25  │ £1.78   │ Got paid    ║\n" +
-            "   ╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
+            "        ╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
+            "        ║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +
+            "        ╠════════════╪══════════════════╪════════╪═════════╪═════════════╣\n" +
+            "        ║ 2018-01-01 │ CREDIT           │ £1.25  │ £1.25   │ Got paid    ║\n" +
+            "        ╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
+            "        ║ 2018-01-01 │ CREDIT           │ £1.25  │ £2.50   │ Got paid    ║\n" +
+            "        ╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
+            "        ║ 2018-01-02 │ DEBIT            │ £0.72  │ £1.78   │ Paid bill   ║\n" +
+            "        ╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
 
     private TestLogger logger = new TestLogger();
     private TestTransactionMaker testTransactionMaker = new TestTransactionMaker();

@@ -2,6 +2,7 @@ package io.github.perrymant.moneymaker;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.jakewharton.fliptables.FlipTable;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ class Budget {
     private final Balance balance;
     private final List<Transaction> transactions;
     private final List<ReportLine> report = new ArrayList<>();
-    private String om;
+    private String objectMapperAsString;
 
     Budget(final Balance balance, final List<Transaction> transactions) {
         this.balance = balance;
@@ -50,19 +51,20 @@ class Budget {
         report.add(new ReportLine(transaction, balance.get()));
     }
 
-
     String reportJSON() {
         updateBalance();
         ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter writer = objectMapper.writer().withRootName("report");
         try {
-            om = objectMapper.writeValueAsString(report);
-            System.out.println(om);
+            objectMapperAsString = objectMapper.writeValueAsString(report);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return String.valueOf(om);
+        return String.valueOf(objectMapperAsString);
     }
+
 }
+
 
 
 //    @GetMapping
@@ -90,4 +92,16 @@ class Budget {
 //            e.printStackTrace();
 //        }
 //        return "ERROR";
+//    }
+
+
+//    String reportJSON_1() {
+//        updateBalance();
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        try {
+//            objectMapperAsString = objectMapper.writeValueAsString(report);
+//        } catch (JsonProcessingException e) {
+//            e.printStackTrace();
+//        }
+//        return String.valueOf(objectMapperAsString);
 //    }
