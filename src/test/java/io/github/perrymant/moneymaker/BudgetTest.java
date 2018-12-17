@@ -27,15 +27,15 @@ public class BudgetTest {
         List<Transaction> transactions = new DefaultTransactionMaker().getTransactions();
         final Budget budget = new Budget(balance, transactions);
         String expected = "" +
-                "╔═══════════════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
-                "║ DateTime              │ Transaction Type │ Amount │ Balance │ Description ║\n" +
-                "╠═══════════════════════╪══════════════════╪════════╪═════════╪═════════════╣\n" +
-                "║ 2018-01-011T00:00:01Z │ CREDIT           │ £1.25  │ £1.25   │ Got paid    ║\n" +
-                "╟───────────────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
-                "║ 2018-01-011T00:00:01Z │ CREDIT           │ £1.25  │ £2.50   │ Got paid    ║\n" +
-                "╟───────────────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
-                "║ 2018-01-021T00:00:01Z │ DEBIT            │ £0.72  │ £1.78   │ Paid bill   ║\n" +
-                "╚═══════════════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
+                "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
+                "║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +
+                "╠════════════╪══════════════════╪════════╪═════════╪═════════════╣\n" +
+                "║ 2018-01-01 │ CREDIT           │ £1.25  │ £1.25   │ Got paid    ║\n" +
+                "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
+                "║ 2018-01-01 │ CREDIT           │ £1.25  │ £2.50   │ Got paid    ║\n" +
+                "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
+                "║ 2018-01-02 │ DEBIT            │ £0.72  │ £1.78   │ Paid bill   ║\n" +
+                "╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
         assertEquals(expected, budget.report());
     }
 
@@ -62,7 +62,7 @@ public class BudgetTest {
         final Transaction transaction = new Transaction();
         transaction.setTransactionType(TransactionType.DEBIT);
         transaction.setAmount(20);
-        transaction.setDateTime(DATE_TIME);
+        transaction.setTime(DATE_TIME);
         transaction.setDescription("Lost money");
         return transaction;
     }

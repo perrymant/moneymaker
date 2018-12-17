@@ -4,17 +4,17 @@ import java.io.Serializable;
 
 
 public class Transaction implements Serializable {
-    private String dateTime;
+    private String time;
     private TransactionType transactionType;
     private int amount;
     private String description;
 
-    public String getDateTime() {
-        return dateTime;
+    public String getTime() {
+        return time;
     }
 
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public TransactionType getTransactionType() {

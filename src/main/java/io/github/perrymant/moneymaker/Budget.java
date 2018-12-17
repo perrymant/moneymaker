@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import static io.github.perrymant.moneymaker.TransactionType.CREDIT;
 
 class Budget {
-    private static final String[] HEADERS = new String[]{"DateTime", "Transaction Type", "Amount", "Balance", "Description"};
+    private static final String[] HEADERS = new String[]{"Time", "Transaction Type", "Amount", "Balance", "Description"};
     private final Balance balance;
     private final List<Transaction> transactions;
     private final List<ReportLine> report = new ArrayList<>();
@@ -64,7 +64,6 @@ class Budget {
     }
 
 }
-
 
 
 //    @GetMapping

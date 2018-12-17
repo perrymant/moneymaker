@@ -9,7 +9,7 @@ class TransactionExtractor {
         final Transaction result = new Transaction();
         result.setAmount(Integer.parseInt(input[1]));
         result.setDescription(input[2]);
-        result.setDateTime(input[3]);
+        result.setTime(input[3]);
         result.setTransactionType(result.getAmount() >= 0 ? CREDIT : DEBIT);
         return result;
     }

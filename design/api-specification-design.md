@@ -15,7 +15,7 @@ The `report` request obtains a report of their account.
 {
   "report": [
     {
-      "dateTime": "2018-11-28T17:34:45Z",
+      "date": "2018-11-28T17:34:45Z",
       "amount": 1234,
       "balance": 12345678,
       "description": "blah"
@@ -45,7 +45,7 @@ A `transaction` request is sent to append a new transaction to an account.
 ```json
 {
   "transaction": {
-    "dateTime": "2018-11-28T17:34:45Z",
+    "date": "2018-11-28T17:34:45Z",
     "amount": 1234,
     "description": "blah"
   }

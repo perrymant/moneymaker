@@ -29,7 +29,7 @@ public class AccountRepositoryTest {
         final ReportLine transaction = retrieved.getTransactions().get(0);
         assertEquals(transaction.getBalance(), BALANCE);
         assertEquals(transaction.getDescription(), DESCRIPTION);
-        assertEquals(transaction.getDateTime(), TIME);
+        assertEquals(transaction.getTime(), TIME);
         assertEquals(transaction.getTransactionType(), TransactionType.DEBIT);
         assertEquals(transaction.getAmount(), AMOUNT);
     }
@@ -51,7 +51,7 @@ public class AccountRepositoryTest {
         transaction.setAmount(AMOUNT);
         transaction.setDescription(DESCRIPTION);
         transaction.setTransactionType(TransactionType.DEBIT);
-        transaction.setDateTime(TIME);
+        transaction.setTime(TIME);
         return transaction;
     }
 

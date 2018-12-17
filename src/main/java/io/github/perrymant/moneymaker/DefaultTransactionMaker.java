@@ -20,7 +20,7 @@ class DefaultTransactionMaker implements TransactionMaker {
 
     private Transaction makeTransaction() {
         Transaction transaction = new Transaction();
-        transaction.setDateTime("2018-01-011T00:00:01Z");
+        transaction.setTime("2018-01-01");
         transaction.setTransactionType(CREDIT);
         transaction.setAmount(125);
         transaction.setDescription("Got paid");
@@ -29,7 +29,7 @@ class DefaultTransactionMaker implements TransactionMaker {
 
     private Transaction makeTransaction2() {
         Transaction transaction = new Transaction();
-        transaction.setDateTime("2018-01-021T00:00:01Z");
+        transaction.setTime("2018-01-02");
         transaction.setTransactionType(DEBIT);
         transaction.setAmount(72);
         transaction.setDescription("Paid bill");

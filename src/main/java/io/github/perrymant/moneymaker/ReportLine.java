@@ -13,14 +13,14 @@ public class ReportLine extends Transaction implements Serializable {
     ReportLine(final Transaction transaction, final int balance) {
         setAmount(transaction.getAmount());
         setDescription(transaction.getDescription());
-        setDateTime(transaction.getDateTime());
+        setTime(transaction.getTime());
         setTransactionType(transaction.getTransactionType());
         this.balance = balance;
     }
 
     String[] getRowItems() {
         return new String[]{
-                getDateTime(),
+                getTime(),
                 getTransactionType().name(),
                 moneyFormatter.formatPounds(getAmount()),
                 moneyFormatter.formatPounds(getBalance()),

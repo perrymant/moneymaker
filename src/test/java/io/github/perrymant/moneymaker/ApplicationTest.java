@@ -13,7 +13,7 @@ public class ApplicationTest {
 
     private static final String PRE_DETERMINED_REPORT = "" +
             "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
-            "║ DateTime   │ Transaction Type │ Amount │ Balance │ Description ║\n" +
+            "║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +
             "╠════════════╪══════════════════╪════════╪═════════╪═════════════╣\n" +
             "║ 2018-01-04 │ CREDIT           │ £1.25  │ £1.25   │ Got paid    ║\n" +
             "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
@@ -23,7 +23,7 @@ public class ApplicationTest {
             "╚════════════╧══════════════════╧════════╧═════════╧═════════════╝\n";
     private static final String REPORT_AFTER_TRANSACTION = "" +
             "╔════════════╤══════════════════╤════════╤═════════╤═════════════╗\n" +
-            "║ DateTime   │ Transaction Type │ Amount │ Balance │ Description ║\n" +
+            "║ Time       │ Transaction Type │ Amount │ Balance │ Description ║\n" +
             "╠════════════╪══════════════════╪════════╪═════════╪═════════════╣\n" +
             "║ 2018-10-30 │ CREDIT           │ £1.00  │ £1.00   │ A Watch     ║\n" +
             "╟────────────┼──────────────────┼────────┼─────────┼─────────────╢\n" +
@@ -115,7 +115,7 @@ public class ApplicationTest {
         private Transaction makeTransaction(String time, TransactionType type, int amount, String description) {
             final Transaction transaction = new Transaction();
             transaction.setTransactionType(type);
-            transaction.setDateTime(time);
+            transaction.setTime(time);
             transaction.setDescription(description);
             transaction.setAmount(amount);
             return transaction;
