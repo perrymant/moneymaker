@@ -1,0 +1,16 @@
+{
+  "report":[
+    {
+      "date":"2018-01-01",
+      "amount":125,
+      "balance":125,
+      "description":"Got paid"
+    },
+    {
+      "date":"2018-01-02",
+      "amount":-72,
+      "balance":53,
+      "description":"Paid bill"
+    }
+  ]
+}
