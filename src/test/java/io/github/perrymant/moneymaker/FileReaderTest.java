@@ -30,7 +30,7 @@ public class FileReaderTest {
                 "    }\n" +
                 "  ]\n" +
                 "}";
-        assertEquals(targetJSON, new FileReader().read("report_seed_data.json"));
+        assertEquals(targetJSON, new FileReader().read("report_seed_data_test.json"));
     }
 
 
