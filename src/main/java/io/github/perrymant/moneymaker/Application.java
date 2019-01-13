@@ -17,7 +17,7 @@ class Application {
             if ("help".equals(args[0])) {
                 logger.info(reader.read("moneymaker-help.txt"));
             } else if ("report".equals(args[0])) {
-                logger.info(reader.read("report_seed_data.json"));
+                logger.info(budget.report());
             } else if ("transaction".equals(args[0])) {
                 budget.transaction(args);
             } else {
