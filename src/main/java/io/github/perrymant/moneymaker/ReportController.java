@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ReportController {
 
-    @GetMapping("/report")
+    @GetMapping(value = "/report", produces = "application/json; charset=utf-8")
     public String report() {
         FileReader reader = new FileReader();
         return reader.read("report_seed_data.json");
