@@ -10,6 +10,7 @@ public class FileReaderTest {
     public void canDisplayHelpInfo() {
         assertEquals("Some Text", new FileReader().read("flatfile.txt"));
     }
+
 }
 
 
