@@ -1,5 +1,7 @@
 package io.github.perrymant.moneymaker;
 
+import org.springframework.boot.SpringApplication;
+
 class Application {
     static final String ERROR_MESSAGE = "Error: Invalid argument: moneymaker help for more info.";
     private final Budget budget;
@@ -24,7 +26,7 @@ class Application {
                 logger.info(ERROR_MESSAGE);
             }
         } else {
-            logger.info(ERROR_MESSAGE);
+            SpringApplication.run(Main.class, args);
         }
     }
 
