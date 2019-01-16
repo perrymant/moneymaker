@@ -85,7 +85,7 @@ public class CliTest {
     }
 
     @Test
-    public void givenNoArgsLogsErrorMessage() {
+    public void givenGarbageArgsLogsErrorMessage() {
         target.start(new String[]{"GarbAgE"});
         assertEquals(ERROR_MESSAGE, logger.getMessage());
     }
@@ -94,12 +94,6 @@ public class CliTest {
     public void givenReportLogsReport() {
         target.start(new String[]{"report"});
         assertEquals(PRE_DETERMINED_JSON_REPORT, logger.getMessage());
-    }
-
-    @Test
-    public void givenGarbageLogsErrorMessage() {
-        target.start(new String[]{"fish"});
-        assertEquals(ERROR_MESSAGE, logger.getMessage());
     }
 
     @Ignore
