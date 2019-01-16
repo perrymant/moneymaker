@@ -5,12 +5,12 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static io.github.perrymant.moneymaker.Application.ERROR_MESSAGE;
+import static io.github.perrymant.moneymaker.Cli.ERROR_MESSAGE;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
 
-public class ApplicationTest {
+public class CliTest {
 
     private static final String PRE_DETERMINED_JSON_REPORT = "" +
             "{\n" +
@@ -76,7 +76,7 @@ public class ApplicationTest {
 
     private TestLogger logger = new TestLogger();
     private TestTransactionMaker testTransactionMaker = new TestTransactionMaker();
-    private Application target = new Application(logger, testTransactionMaker);
+    private Cli target = new Cli(logger, testTransactionMaker);
 
     @Test
     public void givenHelpLogsHelpMessage() {
