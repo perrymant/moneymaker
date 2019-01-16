@@ -1,13 +1,13 @@
 package io.github.perrymant.moneymaker;
 
-class Application {
+class Cli {
     static final String ERROR_MESSAGE = "Error: Invalid argument: moneymaker help for more info.";
     private final Budget budget;
     private final FileReader reader = new FileReader();
 
     private final Logger logger;
 
-    Application(Logger logger, TransactionMaker transactionMaker) {
+    Cli(Logger logger, TransactionMaker transactionMaker) {
         this.logger = logger;
         this.budget = new Budget(new Balance(), transactionMaker.getTransactions());
     }
@@ -17,7 +17,7 @@ class Application {
             if ("help".equals(args[0])) {
                 logger.info(reader.read("moneymaker-help.txt"));
             } else if ("report".equals(args[0])) {
-                logger.info(budget.report());
+                logger.info(reader.read("report_seed_data.json"));
             } else if ("transaction".equals(args[0])) {
                 budget.transaction(args);
             } else {
