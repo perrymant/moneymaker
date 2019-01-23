@@ -12,7 +12,9 @@ class ReportRepository {
         try {
             return mapper.readValue(new File(fileName), Account.class);
         } catch (IOException e) {
-            throw new FileIOException("FileIOException: couldn't read", e);
+            // The file has not yet been created. This means that the user has not yet written any data to moneymaker.
+            // In this case, we treat this as being a 'new' empty account, instead of throwing an exception.
+            return new Account();
         }
     }
 
