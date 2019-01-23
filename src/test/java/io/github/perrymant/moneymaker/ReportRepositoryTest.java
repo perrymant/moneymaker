@@ -13,7 +13,6 @@ public class ReportRepositoryTest {
     private static final int AMOUNT = 24;
     private static final String DESCRIPTION = "new watch";
     private static final String TIME = "2019-03-02";
-    private static final int BALANCE = 44;
     private static final String FILE_NAME = FileUtils.getTempDirectoryPath() + "/file_with_data_append_test";
 
     private ReportRepository target = new ReportRepository();
@@ -26,8 +25,7 @@ public class ReportRepositoryTest {
 
     private void makeAssertions(Account retrieved) {
         assertEquals(1, retrieved.getTransactions().size());
-        final ReportLine transaction = retrieved.getTransactions().get(0);
-        assertEquals(transaction.getBalance(), BALANCE);
+        final Transaction transaction = retrieved.getTransactions().get(0);
         assertEquals(transaction.getDescription(), DESCRIPTION);
         assertEquals(transaction.getTime(), TIME);
         assertEquals(transaction.getTransactionType(), TransactionType.DEBIT);
@@ -36,13 +34,13 @@ public class ReportRepositoryTest {
 
     private Account makeAccount() {
         final Account account = new Account();
-        account.setTransactions(makeReportLines());
+        account.setTransactions(makeTransactionList());
         return account;
     }
 
-    private List<ReportLine> makeReportLines() {
-        final List<ReportLine> transactions = new ArrayList<>();
-        transactions.add(new ReportLine(makeTransaction(), BALANCE));
+    private List<Transaction> makeTransactionList() {
+        final List<Transaction> transactions = new ArrayList<>();
+        transactions.add(makeTransaction());
         return transactions;
     }
 
