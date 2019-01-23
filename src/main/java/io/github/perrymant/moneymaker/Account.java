@@ -12,7 +12,6 @@ import java.util.List;
  *       "date": ...,
  *       "amount": ...,
  *       "transactionType": ...,
- *       "balance": ...,
  *     },
  *     ...
  *   ]
@@ -20,14 +19,13 @@ import java.util.List;
  * </pre>
  */
 public class Account implements Serializable {
-    private List<ReportLine> transactions;
+    private List<Transaction> transactions;
 
-    public List<ReportLine> getTransactions() {
+    public List<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(List<ReportLine> transactions) {
+    public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
 }
-
