@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class AccountRepositoryTest {
+public class ReportRepositoryTest {
 
     private static final int AMOUNT = 24;
     private static final String DESCRIPTION = "new watch";
@@ -16,7 +16,7 @@ public class AccountRepositoryTest {
     private static final int BALANCE = 44;
     private static final String FILE_NAME = FileUtils.getTempDirectoryPath() + "/file_with_data_append_test";
 
-    private AccountRepository target = new AccountRepository();
+    private ReportRepository target = new ReportRepository();
 
     @Test
     public void canReadAndWriteAccountObject() {

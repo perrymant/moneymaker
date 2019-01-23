@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-class AccountRepository {
+class ReportRepository {
     private ObjectMapper mapper = new ObjectMapper();
 
     Account read(String fileName) {
