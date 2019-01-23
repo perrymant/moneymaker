@@ -14,21 +14,3 @@ public class ReportResponse {
         this.transactions = transactions;
     }
 }
-
-
-
-/*
-{
-  "transactions": [
-    {
-      "description": "...",
-      "date": "...",
-      "amount": "...",
-      "transactionType": "...",
-      "balance": "...",
-    },
-    "..."
-  ]
-}
-
-*/
