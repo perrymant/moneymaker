@@ -27,7 +27,7 @@ public class ReportRepositoryTest {
         assertEquals(1, retrieved.getTransactions().size());
         final Transaction transaction = retrieved.getTransactions().get(0);
         assertEquals(transaction.getDescription(), DESCRIPTION);
-        assertEquals(transaction.getTime(), TIME);
+        assertEquals(transaction.getDate(), TIME);
         assertEquals(transaction.getTransactionType(), TransactionType.DEBIT);
         assertEquals(transaction.getAmount(), AMOUNT);
     }
@@ -49,7 +49,7 @@ public class ReportRepositoryTest {
         transaction.setAmount(AMOUNT);
         transaction.setDescription(DESCRIPTION);
         transaction.setTransactionType(TransactionType.DEBIT);
-        transaction.setTime(TIME);
+        transaction.setDate(TIME);
         return transaction;
     }
 

@@ -44,7 +44,7 @@ public class BudgetTest {
         final Transaction transaction = new Transaction();
         transaction.setTransactionType(TransactionType.DEBIT);
         transaction.setAmount(20);
-        transaction.setTime(DATE_TIME);
+        transaction.setDate(DATE_TIME);
         transaction.setDescription("Lost money");
         return transaction;
     }
