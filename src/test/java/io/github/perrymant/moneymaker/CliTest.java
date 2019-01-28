@@ -116,7 +116,7 @@ public class CliTest {
         private Transaction makeTransaction(String time, TransactionType type, int amount, String description) {
             final Transaction transaction = new Transaction();
             transaction.setTransactionType(type);
-            transaction.setTime(time);
+            transaction.setDate(time);
             transaction.setDescription(description);
             transaction.setAmount(amount);
             return transaction;

@@ -1,18 +1,22 @@
 package io.github.perrymant.moneymaker;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
 
-class AccountRepository {
+@Component
+class ReportRepository {
     private ObjectMapper mapper = new ObjectMapper();
 
     Account read(String fileName) {
         try {
             return mapper.readValue(new File(fileName), Account.class);
         } catch (IOException e) {
-            throw new FileIOException("FileIOException: couldn't read", e);
+            // The file has not yet been created. This means that the user has not yet written any data to moneymaker.
+            // In this case, we treat this as being a 'new' empty account, instead of throwing an exception.
+            return new Account();
         }
     }
 

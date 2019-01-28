@@ -3,17 +3,17 @@ package io.github.perrymant.moneymaker;
 import java.io.Serializable;
 
 public class Transaction implements Serializable {
-    private String time;
+    private String date;
     private TransactionType transactionType;
     private int amount;
     private String description;
 
-    public String getTime() {
-        return time;
+    public String getDate() {
+        return date;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public TransactionType getTransactionType() {
