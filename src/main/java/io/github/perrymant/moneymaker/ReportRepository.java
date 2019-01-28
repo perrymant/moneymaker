@@ -1,10 +1,12 @@
 package io.github.perrymant.moneymaker;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
 
+@Component
 class ReportRepository {
     private ObjectMapper mapper = new ObjectMapper();
 
