@@ -33,5 +33,6 @@ dependencies {
     compile 'junit:junit:4.12'
     compile 'com.jakewharton.fliptables:fliptables:1.0.2'
     compile 'commons-io:commons-io:2.5'
+    testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
