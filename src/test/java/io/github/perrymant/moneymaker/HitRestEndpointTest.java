@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -26,17 +27,16 @@ public class HitRestEndpointTest {
 
     private static final String BASE_URL = "/report";
 
-    @Ignore
     @Test
-    public void assertJSONResponse1() throws Exception {
+    public void assertJSONResponse() throws Exception {
         mvc.perform(get(BASE_URL).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.report", contains(125)))
+                .andExpect(jsonPath("$.report[0].amount", is(125)))
                 .andReturn();
     }
 
     @Test
-    public void assertJSONResponse2() throws Exception {
+    public void assertJSONResponse_usingContains() throws Exception {
         this.mvc.perform(get(BASE_URL)).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Got paid")));
     }
