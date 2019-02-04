@@ -1,6 +1,5 @@
 package io.github.perrymant.moneymaker;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -31,7 +29,12 @@ public class HitRestEndpointTest {
     public void assertJSONResponse() throws Exception {
         mvc.perform(get(BASE_URL).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
+                .andExpect(jsonPath("$.report[0].date", is("2018-01-01")))
                 .andExpect(jsonPath("$.report[0].amount", is(125)))
+                .andExpect(jsonPath("$.report[0].description", is("Got paid")))
+                .andExpect(jsonPath("$.report[1].date", is("2018-01-02")))
+                .andExpect(jsonPath("$.report[1].amount", is(-72)))
+                .andExpect(jsonPath("$.report[1].description", is("Paid bill")))
                 .andReturn();
     }
 
@@ -40,5 +43,4 @@ public class HitRestEndpointTest {
         this.mvc.perform(get(BASE_URL)).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Got paid")));
     }
-
 }
