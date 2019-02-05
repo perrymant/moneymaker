@@ -17,10 +17,10 @@ public class ReportLineTest {
         final Object[] rowItems = new ReportLine(makeTransaction(), balance).getRowItems();
         assertArrayEquals(
                 new String[]{DATE_TIME,
-                        TransactionType.CREDIT.name(),
-                        AMOUNT_FORMATTED,
-                        BALANCE_FORMATTED,
-                        DESCRIPTION},
+                    TransactionType.CREDIT.name(),
+                    AMOUNT_FORMATTED,
+                    BALANCE_FORMATTED,
+                    DESCRIPTION},
                 rowItems);
     }
 

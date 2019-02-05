@@ -10,3 +10,5 @@ jdk:
 #    - $HOME/.gradle/wrapper/
 script:
 - ./gradlew test --info --stacktrace
+- ./gradlew checkstyleMain
+- ./gradlew checkstyleTest
