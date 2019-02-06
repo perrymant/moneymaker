@@ -9,21 +9,20 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class HitRestEndpointTest {
+public class GetReportTest {
+
+    private static final String BASE_URL = "/report";
 
     @Autowired
     private MockMvc mvc;
-
-    private static final String BASE_URL = "/report";
 
     @Test
     public void assertJSONResponse() throws Exception {
@@ -38,9 +37,4 @@ public class HitRestEndpointTest {
                 .andReturn();
     }
 
-    @Test
-    public void assertJSONResponse_usingContains() throws Exception {
-        this.mvc.perform(get(BASE_URL)).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Got paid")));
-    }
 }
